@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package paymentbot;
+
+service PaymentBot {
+  rpc SendMessage(Request) returns (Response);
+}
+
+message Request {
+  string subject = 1;
+  string message = 2;
+}
+
+message Response {
+}

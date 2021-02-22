@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package merchant;
+
+service Merchant {
+  rpc GetOrderInfo(Request) returns (Response);
+}
+
+message Request {
+  int32 amount = 1;
+  string currency = 2;
+  string customerEmail = 3;
+  string customerPhone = 4;
+  bool includeCommission = 5;
+  bool rebill = 6;
+  string shopId = 7;
+  string secretKey = 8;
+  string providerSlug = 9;
+}
+
+message Response {
+  string token = 1;
+  string redirectUrl = 2;
+}
