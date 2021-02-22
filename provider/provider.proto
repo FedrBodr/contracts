@@ -22,4 +22,5 @@ message Request {
 message Response {
   string token = 1;
   string redirectUrl = 2;
+  string message = 3;
 }
