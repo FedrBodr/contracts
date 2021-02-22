@@ -9,7 +9,9 @@ service PaymentBot {
 message Request {
   string subject = 1;
   string message = 2;
+  map<int64, int32> messagesForAnswer = 3;
 }
 
 message Response {
+  map<int64, int32> messagesForAnswer = 1;
 }
