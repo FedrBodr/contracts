@@ -3,10 +3,12 @@ syntax = "proto3";
 package provider;
 
 service Provider {
-  rpc GetPaymentToken(Request) returns (Response);
+  rpc GetPaymentToken(GetPaymentTokenRequest) returns (GetPaymentTokenResponse);
+  rpc GetPaymentStatus(GetPaymentStatusRequest) returns (GetPaymentStatusResponse);
+  rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDRessponses);
 }
 
-message Request {
+message GetPaymentTokenRequest {
   int32 amount = 1;
   string currency = 2;
   string customerEmail = 3;
@@ -19,8 +21,27 @@ message Request {
   string trackingId = 10;
 }
 
-message Response {
+message GetPaymentTokenResponse {
   string token = 1;
   string redirectUrl = 2;
   string message = 3;
+}
+
+message GetPaymentStatusRequest{
+
+}
+
+message GetPaymentStatusResponse {
+
+}
+
+message GetProviderByIDRequest{
+  int32 id = 1;
+}
+
+message GetProviderByIDResponses{
+  int32 id = 1;
+  string alias = 2;
+  string name = 3;
+  string domain = 4;
 }
