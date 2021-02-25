@@ -5,7 +5,7 @@ package provider;
 service Provider {
   rpc GetPaymentToken(GetPaymentTokenRequest) returns (GetPaymentTokenResponse);
   rpc GetPaymentStatus(GetPaymentStatusRequest) returns (GetPaymentStatusResponse);
-  rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDRessponses);
+  rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDResponse);
 }
 
 message GetPaymentTokenRequest {
@@ -39,7 +39,7 @@ message GetProviderByIDRequest{
   int32 id = 1;
 }
 
-message GetProviderByIDResponses{
+message GetProviderByIDResponse{
   int32 id = 1;
   string alias = 2;
   string name = 3;
