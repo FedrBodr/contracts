@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package order;
+
+service Order {
+  rpc GetOrderById(ByIdRequest) returns (OrderResponse);
+  rpc GetOrderByUID(ByUIDRequest) returns (Response);
+  rpc GetOrders(Request) returns (Response);
+  rpc GetOrdersByMerchant(Request) returns (Response);
+  rpc SetOrderStatus(SetOrderStatusRequest) returns (Response);
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+}
+
+message ByIdRequest{
+  int32 id = 1;
+}
+
+message ByUIDRequest {
+  string uid = 1;
+}
+
+message CreateOrderRequest{
+  int32 id = 1;
+  int32 provider_id = 2;
+  int32 merchant_id = 3;
+  int32 amount = 4;
+  string currency = 5;
+  string customer_email = 6;
+  string customer_phone = 7;
+  string description = 8;
+  string tracking_id = 9;
+  string status = 10;
+  string acquirefy_uid = 11;
+  string provider_uid = 12;
+  string merchant_tracking_uid = 13;
+}
+
+message CreateOrderResponse{
+  int32 id = 1;
+  //
+}
+
+message SetOrderStatusRequest{
+  int32 id = 1;
+  string newStatus = 2;
+}
+
+message OrderResponse{
+
+}
+
+message Request {
+  int32 amount = 1;
+  string currency = 2;
+  string customerEmail = 3;
+  string customerPhone = 4;
+  bool includeCommission = 5;
+  bool rebill = 6;
+  string shopId = 7;
+  string secretKey = 8;
+  string providerSlug = 9;
+  string trackingId = 10;
+}
+
+message Response {
+  string token = 1;
+  string redirectUrl = 2;
+  string message = 3;
+}
