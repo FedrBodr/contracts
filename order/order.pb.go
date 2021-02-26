@@ -120,7 +120,7 @@ func (m *ByUIDRequest) GetUid() string {
 	return ""
 }
 
-type CreateOrderRequest struct {
+type OrderElement struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	ProviderId           int32    `protobuf:"varint,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
 	MerchantId           int32    `protobuf:"varint,3,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty"`
@@ -139,11 +139,142 @@ type CreateOrderRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
+func (m *OrderElement) Reset()         { *m = OrderElement{} }
+func (m *OrderElement) String() string { return proto.CompactTextString(m) }
+func (*OrderElement) ProtoMessage()    {}
+func (*OrderElement) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fa47a2077d8980ed, []int{2}
+}
+func (m *OrderElement) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *OrderElement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_OrderElement.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *OrderElement) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OrderElement.Merge(m, src)
+}
+func (m *OrderElement) XXX_Size() int {
+	return m.Size()
+}
+func (m *OrderElement) XXX_DiscardUnknown() {
+	xxx_messageInfo_OrderElement.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OrderElement proto.InternalMessageInfo
+
+func (m *OrderElement) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *OrderElement) GetProviderId() int32 {
+	if m != nil {
+		return m.ProviderId
+	}
+	return 0
+}
+
+func (m *OrderElement) GetMerchantId() int32 {
+	if m != nil {
+		return m.MerchantId
+	}
+	return 0
+}
+
+func (m *OrderElement) GetAmount() int32 {
+	if m != nil {
+		return m.Amount
+	}
+	return 0
+}
+
+func (m *OrderElement) GetCurrency() string {
+	if m != nil {
+		return m.Currency
+	}
+	return ""
+}
+
+func (m *OrderElement) GetCustomerEmail() string {
+	if m != nil {
+		return m.CustomerEmail
+	}
+	return ""
+}
+
+func (m *OrderElement) GetCustomerPhone() string {
+	if m != nil {
+		return m.CustomerPhone
+	}
+	return ""
+}
+
+func (m *OrderElement) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *OrderElement) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *OrderElement) GetProviderUid() string {
+	if m != nil {
+		return m.ProviderUid
+	}
+	return ""
+}
+
+func (m *OrderElement) GetMerchantTrackingUid() string {
+	if m != nil {
+		return m.MerchantTrackingUid
+	}
+	return ""
+}
+
+func (m *OrderElement) GetCredentialName() string {
+	if m != nil {
+		return m.CredentialName
+	}
+	return ""
+}
+
+func (m *OrderElement) GetProviderName() string {
+	if m != nil {
+		return m.ProviderName
+	}
+	return ""
+}
+
+type CreateOrderRequest struct {
+	Order                *OrderElement `protobuf:"bytes,1,opt,name=order,proto3" json:"order,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
 func (m *CreateOrderRequest) Reset()         { *m = CreateOrderRequest{} }
 func (m *CreateOrderRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateOrderRequest) ProtoMessage()    {}
 func (*CreateOrderRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{2}
+	return fileDescriptor_fa47a2077d8980ed, []int{3}
 }
 func (m *CreateOrderRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -172,95 +303,11 @@ func (m *CreateOrderRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateOrderRequest proto.InternalMessageInfo
 
-func (m *CreateOrderRequest) GetId() int32 {
+func (m *CreateOrderRequest) GetOrder() *OrderElement {
 	if m != nil {
-		return m.Id
+		return m.Order
 	}
-	return 0
-}
-
-func (m *CreateOrderRequest) GetProviderId() int32 {
-	if m != nil {
-		return m.ProviderId
-	}
-	return 0
-}
-
-func (m *CreateOrderRequest) GetMerchantId() int32 {
-	if m != nil {
-		return m.MerchantId
-	}
-	return 0
-}
-
-func (m *CreateOrderRequest) GetAmount() int32 {
-	if m != nil {
-		return m.Amount
-	}
-	return 0
-}
-
-func (m *CreateOrderRequest) GetCurrency() string {
-	if m != nil {
-		return m.Currency
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetCustomerEmail() string {
-	if m != nil {
-		return m.CustomerEmail
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetCustomerPhone() string {
-	if m != nil {
-		return m.CustomerPhone
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetDescription() string {
-	if m != nil {
-		return m.Description
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetStatus() string {
-	if m != nil {
-		return m.Status
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetProviderUid() string {
-	if m != nil {
-		return m.ProviderUid
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetMerchantTrackingUid() string {
-	if m != nil {
-		return m.MerchantTrackingUid
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetCredentialName() string {
-	if m != nil {
-		return m.CredentialName
-	}
-	return ""
-}
-
-func (m *CreateOrderRequest) GetProviderName() string {
-	if m != nil {
-		return m.ProviderName
-	}
-	return ""
+	return nil
 }
 
 type CreateOrderResponse struct {
@@ -275,7 +322,7 @@ func (m *CreateOrderResponse) Reset()         { *m = CreateOrderResponse{} }
 func (m *CreateOrderResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateOrderResponse) ProtoMessage()    {}
 func (*CreateOrderResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{3}
+	return fileDescriptor_fa47a2077d8980ed, []int{4}
 }
 func (m *CreateOrderResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -330,7 +377,7 @@ func (m *SetOrderStatusRequest) Reset()         { *m = SetOrderStatusRequest{} }
 func (m *SetOrderStatusRequest) String() string { return proto.CompactTextString(m) }
 func (*SetOrderStatusRequest) ProtoMessage()    {}
 func (*SetOrderStatusRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{4}
+	return fileDescriptor_fa47a2077d8980ed, []int{5}
 }
 func (m *SetOrderStatusRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -385,7 +432,7 @@ func (m *SetOrderStatusResponse) Reset()         { *m = SetOrderStatusResponse{}
 func (m *SetOrderStatusResponse) String() string { return proto.CompactTextString(m) }
 func (*SetOrderStatusResponse) ProtoMessage()    {}
 func (*SetOrderStatusResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{5}
+	return fileDescriptor_fa47a2077d8980ed, []int{6}
 }
 func (m *SetOrderStatusResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -439,7 +486,7 @@ func (m *OrderResponse) Reset()         { *m = OrderResponse{} }
 func (m *OrderResponse) String() string { return proto.CompactTextString(m) }
 func (*OrderResponse) ProtoMessage()    {}
 func (*OrderResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{6}
+	return fileDescriptor_fa47a2077d8980ed, []int{7}
 }
 func (m *OrderResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -495,7 +542,7 @@ func (m *Request) Reset()         { *m = Request{} }
 func (m *Request) String() string { return proto.CompactTextString(m) }
 func (*Request) ProtoMessage()    {}
 func (*Request) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{7}
+	return fileDescriptor_fa47a2077d8980ed, []int{8}
 }
 func (m *Request) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -607,7 +654,7 @@ func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 func (*Response) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fa47a2077d8980ed, []int{8}
+	return fileDescriptor_fa47a2077d8980ed, []int{9}
 }
 func (m *Response) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -657,9 +704,96 @@ func (m *Response) GetMessage() string {
 	return ""
 }
 
+type GetOrdersRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetOrdersRequest) Reset()         { *m = GetOrdersRequest{} }
+func (m *GetOrdersRequest) String() string { return proto.CompactTextString(m) }
+func (*GetOrdersRequest) ProtoMessage()    {}
+func (*GetOrdersRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fa47a2077d8980ed, []int{10}
+}
+func (m *GetOrdersRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetOrdersRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetOrdersRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetOrdersRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetOrdersRequest.Merge(m, src)
+}
+func (m *GetOrdersRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetOrdersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOrdersRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetOrdersRequest proto.InternalMessageInfo
+
+type GetOrdersResponse struct {
+	Order                []*OrderElement `protobuf:"bytes,1,rep,name=order,proto3" json:"order,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *GetOrdersResponse) Reset()         { *m = GetOrdersResponse{} }
+func (m *GetOrdersResponse) String() string { return proto.CompactTextString(m) }
+func (*GetOrdersResponse) ProtoMessage()    {}
+func (*GetOrdersResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fa47a2077d8980ed, []int{11}
+}
+func (m *GetOrdersResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetOrdersResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetOrdersResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetOrdersResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetOrdersResponse.Merge(m, src)
+}
+func (m *GetOrdersResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetOrdersResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOrdersResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetOrdersResponse proto.InternalMessageInfo
+
+func (m *GetOrdersResponse) GetOrder() []*OrderElement {
+	if m != nil {
+		return m.Order
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*ByIdRequest)(nil), "order.ByIdRequest")
 	proto.RegisterType((*ByUIDRequest)(nil), "order.ByUIDRequest")
+	proto.RegisterType((*OrderElement)(nil), "order.OrderElement")
 	proto.RegisterType((*CreateOrderRequest)(nil), "order.CreateOrderRequest")
 	proto.RegisterType((*CreateOrderResponse)(nil), "order.CreateOrderResponse")
 	proto.RegisterType((*SetOrderStatusRequest)(nil), "order.SetOrderStatusRequest")
@@ -667,55 +801,61 @@ func init() {
 	proto.RegisterType((*OrderResponse)(nil), "order.OrderResponse")
 	proto.RegisterType((*Request)(nil), "order.Request")
 	proto.RegisterType((*Response)(nil), "order.Response")
+	proto.RegisterType((*GetOrdersRequest)(nil), "order.GetOrdersRequest")
+	proto.RegisterType((*GetOrdersResponse)(nil), "order.GetOrdersResponse")
 }
 
 func init() { proto.RegisterFile("order/order.proto", fileDescriptor_fa47a2077d8980ed) }
 
 var fileDescriptor_fa47a2077d8980ed = []byte{
-	// 687 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x95, 0xdf, 0x4e, 0x13, 0x4f,
-	0x14, 0xc7, 0x7f, 0x5d, 0x7e, 0x85, 0xf6, 0xf4, 0x0f, 0x30, 0x05, 0xb2, 0x36, 0x50, 0x70, 0xd1,
-	0xe8, 0x05, 0xc1, 0x04, 0xa3, 0xf1, 0xba, 0x80, 0x66, 0x35, 0xa8, 0x29, 0xf6, 0xce, 0x84, 0x2c,
-	0x3b, 0x47, 0x98, 0xd0, 0xdd, 0x2d, 0x33, 0xb3, 0x9a, 0xbe, 0x89, 0x6f, 0xa4, 0xde, 0xf9, 0x08,
-	0xa6, 0x3e, 0x82, 0x2f, 0x60, 0x66, 0x76, 0x76, 0xb7, 0x4b, 0x59, 0xbc, 0x69, 0x7a, 0xbe, 0xe7,
-	0x7b, 0x4e, 0xcf, 0xcc, 0x7c, 0x66, 0x0a, 0xab, 0x11, 0xa7, 0xc8, 0x9f, 0xe8, 0xcf, 0xfd, 0x31,
-	0x8f, 0x64, 0x44, 0xaa, 0x3a, 0x70, 0xb6, 0xa0, 0xd1, 0x9f, 0xb8, 0x74, 0x80, 0xd7, 0x31, 0x0a,
-	0x49, 0xda, 0x60, 0x31, 0x6a, 0x57, 0x76, 0x2a, 0x8f, 0xab, 0x03, 0x8b, 0x51, 0x67, 0x07, 0x9a,
-	0xfd, 0xc9, 0xd0, 0x3d, 0x4a, 0xf3, 0x2b, 0xb0, 0x10, 0x1b, 0x43, 0x7d, 0xa0, 0xbe, 0x3a, 0xdf,
-	0x16, 0x80, 0x1c, 0x72, 0xf4, 0x24, 0xbe, 0x53, 0x0d, 0x4b, 0x1a, 0x91, 0x6d, 0x68, 0x8c, 0x79,
-	0xf4, 0x99, 0x51, 0xe4, 0x67, 0x8c, 0xda, 0x96, 0x4e, 0x40, 0x2a, 0xb9, 0xda, 0x10, 0x20, 0xf7,
-	0x2f, 0xbd, 0x50, 0x2a, 0xc3, 0x42, 0x62, 0x48, 0x25, 0x97, 0x92, 0x0d, 0x58, 0xf4, 0x82, 0x28,
-	0x0e, 0xa5, 0xfd, 0xbf, 0xce, 0x99, 0x88, 0x74, 0xa1, 0xe6, 0xc7, 0x9c, 0x63, 0xe8, 0x4f, 0xec,
-	0xaa, 0x9e, 0x2b, 0x8b, 0xc9, 0x43, 0x68, 0xfb, 0xb1, 0x90, 0x51, 0x80, 0xfc, 0x0c, 0x03, 0x8f,
-	0x8d, 0xec, 0x45, 0xed, 0x68, 0xa5, 0xea, 0xb1, 0x12, 0x0b, 0xb6, 0xf1, 0x65, 0x14, 0xa2, 0xbd,
-	0x54, 0xb4, 0xbd, 0x57, 0x22, 0xd9, 0x81, 0x06, 0x45, 0xe1, 0x73, 0x36, 0x96, 0x2c, 0x0a, 0xed,
-	0x9a, 0xf6, 0xcc, 0x4a, 0x6a, 0x46, 0x21, 0x3d, 0x19, 0x0b, 0x1b, 0x74, 0xd2, 0x44, 0xe4, 0x3e,
-	0x34, 0xb3, 0xd5, 0xab, 0xfd, 0x6b, 0x26, 0xa5, 0xa9, 0x36, 0x64, 0x94, 0x1c, 0xc0, 0x7a, 0xb6,
-	0x7e, 0xc9, 0x3d, 0xff, 0x8a, 0x85, 0x17, 0xda, 0xdb, 0xd2, 0xde, 0x4e, 0x9a, 0xfc, 0x60, 0x72,
-	0xaa, 0xe6, 0x11, 0x2c, 0xfb, 0x1c, 0x29, 0x86, 0x92, 0x79, 0xa3, 0xb3, 0xd0, 0x0b, 0xd0, 0x6e,
-	0x6b, 0x77, 0x3b, 0x97, 0xdf, 0x7a, 0x01, 0x92, 0x5d, 0x68, 0x65, 0xbf, 0xaf, 0x6d, 0xcb, 0xda,
-	0x96, 0x0d, 0xa5, 0x4c, 0xce, 0x6b, 0xe8, 0x14, 0x0e, 0x52, 0x8c, 0xa3, 0x50, 0xe0, 0xdc, 0x49,
-	0xee, 0x42, 0xcb, 0xf3, 0xaf, 0x63, 0xc6, 0xf1, 0xd3, 0x44, 0x0f, 0x68, 0x25, 0xbd, 0x32, 0x71,
-	0xc8, 0xa8, 0x73, 0x0c, 0xeb, 0xa7, 0x28, 0x75, 0xa3, 0x53, 0xbd, 0x05, 0x65, 0x5c, 0x6c, 0x42,
-	0x3d, 0xc4, 0x2f, 0x89, 0xc7, 0x74, 0xca, 0x05, 0xe7, 0x25, 0x6c, 0xdc, 0x6c, 0x53, 0x32, 0xd5,
-	0xdd, 0x7d, 0xb6, 0xa1, 0x75, 0xe7, 0xa2, 0x9c, 0x1f, 0x16, 0x2c, 0xa5, 0x23, 0xe6, 0xa0, 0x55,
-	0x4a, 0x41, 0xb3, 0x6e, 0x80, 0xf6, 0x00, 0x8a, 0x48, 0x69, 0x7e, 0xe7, 0x38, 0x9b, 0x71, 0x69,
-	0xa2, 0x34, 0xc9, 0x73, 0x98, 0xed, 0xc1, 0x2a, 0x0b, 0xfd, 0x51, 0x4c, 0xf1, 0x30, 0x0a, 0x02,
-	0x26, 0x84, 0x82, 0x4d, 0x91, 0x5d, 0x1b, 0xcc, 0x27, 0xd4, 0xb4, 0x1c, 0xcf, 0xd9, 0x28, 0x41,
-	0xbb, 0x36, 0x30, 0x91, 0x46, 0xf1, 0x32, 0x1a, 0xbb, 0xd4, 0xb0, 0x6c, 0x22, 0xb5, 0x51, 0x02,
-	0x7d, 0x8e, 0xf2, 0x0d, 0x4e, 0x0c, 0xc2, 0xb9, 0x40, 0x9c, 0x1c, 0xd4, 0xd3, 0x51, 0x7c, 0x61,
-	0xd7, 0x8b, 0x9c, 0x28, 0x8d, 0xf4, 0x00, 0x52, 0x40, 0x5d, 0x6a, 0x40, 0x9f, 0x51, 0x9c, 0x8f,
-	0x50, 0xcb, 0xf6, 0x79, 0x0d, 0xaa, 0x32, 0xba, 0xc2, 0xd0, 0xbc, 0x18, 0x49, 0xa0, 0x2e, 0x12,
-	0x47, 0xca, 0x38, 0xfa, 0x72, 0xc8, 0x47, 0x66, 0x33, 0x67, 0x25, 0x62, 0xc3, 0x52, 0x80, 0x42,
-	0x78, 0x17, 0x68, 0x76, 0x32, 0x0d, 0x0f, 0xfe, 0x58, 0x50, 0xd5, 0x67, 0x49, 0x5e, 0x40, 0xf3,
-	0x95, 0x81, 0x43, 0x3d, 0x61, 0x84, 0xec, 0x27, 0xef, 0xdb, 0xcc, 0x7b, 0xd6, 0x5d, 0x33, 0x5a,
-	0xf1, 0xf4, 0x9f, 0x41, 0x2b, 0xaf, 0x1c, 0xba, 0x47, 0xa4, 0x93, 0x95, 0xe6, 0x6f, 0x5d, 0x77,
-	0xd9, 0x88, 0x59, 0xd9, 0x1e, 0xd4, 0xd3, 0x32, 0x41, 0xda, 0x59, 0xb6, 0xc4, 0xfd, 0x1c, 0x3a,
-	0x99, 0xbb, 0x3f, 0x39, 0x31, 0xd7, 0xf7, 0xdf, 0x75, 0x27, 0xd0, 0x2e, 0x32, 0x4f, 0x36, 0x8d,
-	0xe5, 0xd6, 0x1b, 0xd5, 0xdd, 0x2a, 0xc9, 0x9a, 0x76, 0x47, 0xd0, 0x98, 0xb9, 0xd5, 0xe4, 0x9e,
-	0x71, 0xcf, 0x3f, 0xd9, 0xdd, 0xee, 0x6d, 0xa9, 0xa4, 0x4b, 0x7f, 0xe5, 0xfb, 0xb4, 0x57, 0xf9,
-	0x39, 0xed, 0x55, 0x7e, 0x4d, 0x7b, 0x95, 0xaf, 0xbf, 0x7b, 0xff, 0x9d, 0x2f, 0xea, 0xbf, 0x91,
-	0xa7, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x77, 0xa2, 0x8f, 0xe1, 0x5b, 0x06, 0x00, 0x00,
+	// 742 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x55, 0x6d, 0x4f, 0x13, 0x41,
+	0x10, 0xb6, 0xad, 0x85, 0x76, 0xfa, 0x02, 0x6c, 0x01, 0xcf, 0x0b, 0x14, 0x3c, 0x34, 0x6a, 0x62,
+	0x30, 0xc1, 0x68, 0xfc, 0x84, 0x49, 0x01, 0xcd, 0x69, 0x50, 0x53, 0xec, 0x37, 0x13, 0x72, 0xdc,
+	0x8e, 0xb0, 0xe1, 0x5e, 0xca, 0xde, 0x9e, 0xa6, 0x3f, 0xc0, 0xff, 0xe0, 0xdf, 0xf1, 0x9b, 0x7e,
+	0xf3, 0x27, 0x18, 0xfc, 0x23, 0x66, 0xf7, 0xf6, 0x5e, 0xca, 0x51, 0xbe, 0x34, 0x9d, 0x67, 0x9e,
+	0x99, 0x9d, 0x9d, 0x7d, 0x66, 0x0e, 0x96, 0x42, 0x4e, 0x91, 0x3f, 0x55, 0xbf, 0xdb, 0x63, 0x1e,
+	0x8a, 0x90, 0xd4, 0x95, 0x61, 0xad, 0x43, 0x6b, 0x30, 0xb1, 0xe9, 0x10, 0x2f, 0x62, 0x8c, 0x04,
+	0xe9, 0x42, 0x95, 0x51, 0xa3, 0xb2, 0x59, 0x79, 0x54, 0x1f, 0x56, 0x19, 0xb5, 0x36, 0xa1, 0x3d,
+	0x98, 0x8c, 0xec, 0xfd, 0xd4, 0xbf, 0x08, 0xb5, 0x58, 0x13, 0x9a, 0x43, 0xf9, 0xd7, 0xfa, 0x59,
+	0x83, 0xf6, 0x07, 0x99, 0xea, 0xc0, 0x43, 0x1f, 0x83, 0x52, 0x0a, 0xb2, 0x01, 0xad, 0x31, 0x0f,
+	0xbf, 0x32, 0x8a, 0xfc, 0x98, 0x51, 0xa3, 0xaa, 0x1c, 0x90, 0x42, 0xb6, 0x22, 0xf8, 0xc8, 0xdd,
+	0x33, 0x27, 0x10, 0x92, 0x50, 0x4b, 0x08, 0x29, 0x64, 0x53, 0xb2, 0x0a, 0x73, 0x8e, 0x1f, 0xc6,
+	0x81, 0x30, 0x6e, 0x2b, 0x9f, 0xb6, 0x88, 0x09, 0x0d, 0x37, 0xe6, 0x1c, 0x03, 0x77, 0x62, 0xd4,
+	0x55, 0x45, 0x99, 0x4d, 0x1e, 0x40, 0xd7, 0x8d, 0x23, 0x11, 0xfa, 0xc8, 0x8f, 0xd1, 0x77, 0x98,
+	0x67, 0xcc, 0x29, 0x46, 0x27, 0x45, 0x0f, 0x24, 0x38, 0x45, 0x1b, 0x9f, 0x85, 0x01, 0x1a, 0xf3,
+	0xd3, 0xb4, 0x8f, 0x12, 0x24, 0x9b, 0xd0, 0xa2, 0x18, 0xb9, 0x9c, 0x8d, 0x05, 0x0b, 0x03, 0xa3,
+	0xa1, 0x38, 0x45, 0x48, 0xd6, 0x18, 0x09, 0x47, 0xc4, 0x91, 0x01, 0xca, 0xa9, 0x2d, 0x72, 0x0f,
+	0xda, 0xd9, 0xed, 0x65, 0xe7, 0xda, 0x49, 0x68, 0x8a, 0x8d, 0x18, 0x25, 0x3b, 0xb0, 0x92, 0xdd,
+	0x5f, 0x70, 0xc7, 0x3d, 0x67, 0xc1, 0xa9, 0xe2, 0x76, 0x14, 0xb7, 0x97, 0x3a, 0x3f, 0x69, 0x9f,
+	0x8c, 0x79, 0x08, 0x0b, 0x2e, 0x47, 0x8a, 0x81, 0x60, 0x8e, 0x77, 0x1c, 0x38, 0x3e, 0x1a, 0x5d,
+	0xc5, 0xee, 0xe6, 0xf0, 0x7b, 0xc7, 0x47, 0xb2, 0x05, 0x9d, 0xec, 0x7c, 0x45, 0x5b, 0x50, 0xb4,
+	0xac, 0x28, 0x49, 0xb2, 0x5e, 0x01, 0xd9, 0xe3, 0xe8, 0x08, 0x54, 0x0f, 0x99, 0xbe, 0xf5, 0x63,
+	0x48, 0x34, 0xa2, 0xde, 0xb2, 0xb5, 0xd3, 0xdb, 0x4e, 0xe4, 0x53, 0x7c, 0xec, 0xa1, 0x56, 0xd1,
+	0x5b, 0xe8, 0x4d, 0x25, 0x88, 0xc6, 0x61, 0x10, 0x61, 0x49, 0x0a, 0x5b, 0xd0, 0x71, 0xdc, 0x8b,
+	0x98, 0x71, 0xfc, 0x32, 0x51, 0x37, 0xac, 0x26, 0xc5, 0x64, 0xe0, 0x88, 0x51, 0xeb, 0x00, 0x56,
+	0x8e, 0x50, 0xa8, 0x44, 0x47, 0xaa, 0x87, 0x33, 0xb4, 0x49, 0xd6, 0xa0, 0x19, 0xe0, 0xb7, 0x84,
+	0xa3, 0x33, 0xe5, 0x80, 0xf5, 0x1a, 0x56, 0xaf, 0xa6, 0x99, 0x51, 0xd5, 0xcd, 0x79, 0x36, 0xa0,
+	0x73, 0xe3, 0xa5, 0xac, 0xdf, 0x55, 0x98, 0x4f, 0x4b, 0xcc, 0x95, 0x5a, 0x99, 0xa9, 0xd4, 0xea,
+	0x15, 0xa5, 0xde, 0x87, 0x69, 0x4d, 0xaa, 0x01, 0x28, 0x09, 0xb5, 0xc0, 0x52, 0x92, 0x54, 0xa3,
+	0x50, 0xd2, 0xe9, 0x13, 0x58, 0x62, 0x81, 0xeb, 0xc5, 0x14, 0xf7, 0x42, 0xdf, 0x67, 0x51, 0x24,
+	0xd5, 0x2a, 0x47, 0xa3, 0x31, 0x2c, 0x3b, 0x64, 0xb5, 0x1c, 0x4f, 0x98, 0x97, 0xcc, 0x46, 0x63,
+	0xa8, 0x2d, 0xa5, 0xe5, 0xb3, 0x70, 0x6c, 0x53, 0x3d, 0x0c, 0xda, 0x92, 0x8d, 0x8a, 0xd0, 0xe5,
+	0x28, 0xde, 0xe1, 0x44, 0xcf, 0x40, 0x0e, 0x10, 0x2b, 0x57, 0xfa, 0x91, 0x17, 0x9f, 0x1a, 0xcd,
+	0x69, 0xa1, 0x49, 0x8c, 0xf4, 0x01, 0x52, 0x85, 0xdb, 0x54, 0x4f, 0x4a, 0x01, 0xb1, 0x3e, 0x43,
+	0x23, 0xeb, 0xf3, 0x32, 0xd4, 0x45, 0x78, 0x8e, 0x81, 0x5e, 0x36, 0x89, 0x21, 0x27, 0x91, 0x23,
+	0x65, 0x1c, 0x5d, 0x31, 0xe2, 0x9e, 0x6e, 0x66, 0x11, 0x22, 0x06, 0xcc, 0xfb, 0x18, 0x45, 0xce,
+	0x29, 0xea, 0x4e, 0xa6, 0xa6, 0x45, 0x60, 0xf1, 0x8d, 0x96, 0x44, 0x2a, 0x2a, 0x6b, 0x17, 0x96,
+	0x0a, 0x98, 0x3e, 0xba, 0xa0, 0xfc, 0xda, 0xcd, 0xca, 0xdf, 0xf9, 0x5e, 0x83, 0xba, 0xc2, 0xc9,
+	0x4b, 0x68, 0xa7, 0x99, 0xe4, 0x46, 0x25, 0x44, 0x47, 0x15, 0xd6, 0xab, 0xb9, 0x5c, 0xcc, 0x94,
+	0x1d, 0xf7, 0x1c, 0x3a, 0x79, 0xe4, 0xc8, 0xde, 0x27, 0xbd, 0x2c, 0x34, 0x5f, 0xbd, 0xe6, 0x82,
+	0x06, 0xb3, 0xb0, 0x5d, 0x68, 0x66, 0xa5, 0x93, 0x3b, 0xda, 0x7b, 0xf5, 0x82, 0xa6, 0x51, 0x76,
+	0xe8, 0xf8, 0x17, 0xd0, 0xcb, 0xc0, 0xc1, 0xe4, 0x50, 0x6f, 0x19, 0xd2, 0xcd, 0xce, 0x99, 0x71,
+	0xee, 0x21, 0x74, 0xa7, 0x27, 0x8b, 0xac, 0x69, 0xca, 0xb5, 0x73, 0x6b, 0xae, 0xcf, 0xf0, 0xea,
+	0x74, 0xfb, 0xd0, 0x2a, 0xec, 0x0e, 0x72, 0x57, 0xb3, 0xcb, 0x0b, 0xc9, 0x34, 0xaf, 0x73, 0x25,
+	0x59, 0x06, 0x8b, 0xbf, 0x2e, 0xfb, 0x95, 0x3f, 0x97, 0xfd, 0xca, 0xdf, 0xcb, 0x7e, 0xe5, 0xc7,
+	0xbf, 0xfe, 0xad, 0x93, 0x39, 0xf5, 0x9d, 0x7b, 0xf6, 0x3f, 0x00, 0x00, 0xff, 0xff, 0xf4, 0x06,
+	0x38, 0x22, 0xfc, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -732,7 +872,7 @@ const _ = grpc.SupportPackageIsVersion4
 type OrderClient interface {
 	GetOrderById(ctx context.Context, in *ByIdRequest, opts ...grpc.CallOption) (*OrderResponse, error)
 	GetOrderByUID(ctx context.Context, in *ByUIDRequest, opts ...grpc.CallOption) (*Response, error)
-	GetOrders(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	GetOrders(ctx context.Context, in *GetOrdersRequest, opts ...grpc.CallOption) (*GetOrdersResponse, error)
 	GetOrdersByMerchant(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
 	SetOrderStatus(ctx context.Context, in *SetOrderStatusRequest, opts ...grpc.CallOption) (*SetOrderStatusResponse, error)
 	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
@@ -764,8 +904,8 @@ func (c *orderClient) GetOrderByUID(ctx context.Context, in *ByUIDRequest, opts 
 	return out, nil
 }
 
-func (c *orderClient) GetOrders(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
+func (c *orderClient) GetOrders(ctx context.Context, in *GetOrdersRequest, opts ...grpc.CallOption) (*GetOrdersResponse, error) {
+	out := new(GetOrdersResponse)
 	err := c.cc.Invoke(ctx, "/order.Order/GetOrders", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -804,7 +944,7 @@ func (c *orderClient) CreateOrder(ctx context.Context, in *CreateOrderRequest, o
 type OrderServer interface {
 	GetOrderById(context.Context, *ByIdRequest) (*OrderResponse, error)
 	GetOrderByUID(context.Context, *ByUIDRequest) (*Response, error)
-	GetOrders(context.Context, *Request) (*Response, error)
+	GetOrders(context.Context, *GetOrdersRequest) (*GetOrdersResponse, error)
 	GetOrdersByMerchant(context.Context, *Request) (*Response, error)
 	SetOrderStatus(context.Context, *SetOrderStatusRequest) (*SetOrderStatusResponse, error)
 	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
@@ -820,7 +960,7 @@ func (*UnimplementedOrderServer) GetOrderById(ctx context.Context, req *ByIdRequ
 func (*UnimplementedOrderServer) GetOrderByUID(ctx context.Context, req *ByUIDRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOrderByUID not implemented")
 }
-func (*UnimplementedOrderServer) GetOrders(ctx context.Context, req *Request) (*Response, error) {
+func (*UnimplementedOrderServer) GetOrders(ctx context.Context, req *GetOrdersRequest) (*GetOrdersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOrders not implemented")
 }
 func (*UnimplementedOrderServer) GetOrdersByMerchant(ctx context.Context, req *Request) (*Response, error) {
@@ -874,7 +1014,7 @@ func _Order_GetOrderByUID_Handler(srv interface{}, ctx context.Context, dec func
 }
 
 func _Order_GetOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Request)
+	in := new(GetOrdersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -886,7 +1026,7 @@ func _Order_GetOrders_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/order.Order/GetOrders",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServer).GetOrders(ctx, req.(*Request))
+		return srv.(OrderServer).GetOrders(ctx, req.(*GetOrdersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1044,7 +1184,7 @@ func (m *ByUIDRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *CreateOrderRequest) Marshal() (dAtA []byte, err error) {
+func (m *OrderElement) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1054,12 +1194,12 @@ func (m *CreateOrderRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CreateOrderRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *OrderElement) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CreateOrderRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *OrderElement) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1150,6 +1290,45 @@ func (m *CreateOrderRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i = encodeVarintOrder(dAtA, i, uint64(m.Id))
 		i--
 		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *CreateOrderRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CreateOrderRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *CreateOrderRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Order != nil {
+		{
+			size, err := m.Order.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintOrder(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
@@ -1452,6 +1631,74 @@ func (m *Response) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *GetOrdersRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetOrdersRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetOrdersRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetOrdersResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetOrdersResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetOrdersResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Order) > 0 {
+		for iNdEx := len(m.Order) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Order[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintOrder(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintOrder(dAtA []byte, offset int, v uint64) int {
 	offset -= sovOrder(v)
 	base := offset
@@ -1494,7 +1741,7 @@ func (m *ByUIDRequest) Size() (n int) {
 	return n
 }
 
-func (m *CreateOrderRequest) Size() (n int) {
+func (m *OrderElement) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1546,6 +1793,22 @@ func (m *CreateOrderRequest) Size() (n int) {
 	}
 	l = len(m.ProviderName)
 	if l > 0 {
+		n += 1 + l + sovOrder(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *CreateOrderRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Order != nil {
+		l = m.Order.Size()
 		n += 1 + l + sovOrder(uint64(l))
 	}
 	if m.XXX_unrecognized != nil {
@@ -1692,6 +1955,36 @@ func (m *Response) Size() (n int) {
 	l = len(m.Message)
 	if l > 0 {
 		n += 1 + l + sovOrder(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetOrdersRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetOrdersResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Order) > 0 {
+		for _, e := range m.Order {
+			l = e.Size()
+			n += 1 + l + sovOrder(uint64(l))
+		}
 	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -1858,7 +2151,7 @@ func (m *ByUIDRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CreateOrderRequest) Unmarshal(dAtA []byte) error {
+func (m *OrderElement) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1881,10 +2174,10 @@ func (m *CreateOrderRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CreateOrderRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: OrderElement: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CreateOrderRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: OrderElement: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2250,6 +2543,93 @@ func (m *CreateOrderRequest) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.ProviderName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipOrder(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthOrder
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *CreateOrderRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowOrder
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CreateOrderRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CreateOrderRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Order", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowOrder
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthOrder
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthOrder
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Order == nil {
+				m.Order = &OrderElement{}
+			}
+			if err := m.Order.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -3107,6 +3487,142 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Message = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipOrder(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthOrder
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetOrdersRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowOrder
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetOrdersRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetOrdersRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipOrder(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthOrder
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetOrdersResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowOrder
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetOrdersResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetOrdersResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Order", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowOrder
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthOrder
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthOrder
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Order = append(m.Order, &OrderElement{})
+			if err := m.Order[len(m.Order)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
