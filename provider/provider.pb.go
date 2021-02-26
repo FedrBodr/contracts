@@ -412,6 +412,100 @@ func (m *GetProviderByIDResponse) GetDomain() string {
 	return ""
 }
 
+type DecodedProviderStatusRequest struct {
+	Status               string   `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DecodedProviderStatusRequest) Reset()         { *m = DecodedProviderStatusRequest{} }
+func (m *DecodedProviderStatusRequest) String() string { return proto.CompactTextString(m) }
+func (*DecodedProviderStatusRequest) ProtoMessage()    {}
+func (*DecodedProviderStatusRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f9ec101486218a7b, []int{6}
+}
+func (m *DecodedProviderStatusRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DecodedProviderStatusRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DecodedProviderStatusRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *DecodedProviderStatusRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DecodedProviderStatusRequest.Merge(m, src)
+}
+func (m *DecodedProviderStatusRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *DecodedProviderStatusRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DecodedProviderStatusRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DecodedProviderStatusRequest proto.InternalMessageInfo
+
+func (m *DecodedProviderStatusRequest) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+type DecodedProviderStatusResponse struct {
+	DecodedStatus        string   `protobuf:"bytes,1,opt,name=decoded_status,json=decodedStatus,proto3" json:"decoded_status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DecodedProviderStatusResponse) Reset()         { *m = DecodedProviderStatusResponse{} }
+func (m *DecodedProviderStatusResponse) String() string { return proto.CompactTextString(m) }
+func (*DecodedProviderStatusResponse) ProtoMessage()    {}
+func (*DecodedProviderStatusResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f9ec101486218a7b, []int{7}
+}
+func (m *DecodedProviderStatusResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DecodedProviderStatusResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DecodedProviderStatusResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *DecodedProviderStatusResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DecodedProviderStatusResponse.Merge(m, src)
+}
+func (m *DecodedProviderStatusResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *DecodedProviderStatusResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DecodedProviderStatusResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DecodedProviderStatusResponse proto.InternalMessageInfo
+
+func (m *DecodedProviderStatusResponse) GetDecodedStatus() string {
+	if m != nil {
+		return m.DecodedStatus
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*GetPaymentTokenRequest)(nil), "provider.GetPaymentTokenRequest")
 	proto.RegisterType((*GetPaymentTokenResponse)(nil), "provider.GetPaymentTokenResponse")
@@ -419,42 +513,48 @@ func init() {
 	proto.RegisterType((*GetPaymentStatusResponse)(nil), "provider.GetPaymentStatusResponse")
 	proto.RegisterType((*GetProviderByIDRequest)(nil), "provider.GetProviderByIDRequest")
 	proto.RegisterType((*GetProviderByIDResponse)(nil), "provider.GetProviderByIDResponse")
+	proto.RegisterType((*DecodedProviderStatusRequest)(nil), "provider.DecodedProviderStatusRequest")
+	proto.RegisterType((*DecodedProviderStatusResponse)(nil), "provider.DecodedProviderStatusResponse")
 }
 
 func init() { proto.RegisterFile("provider/provider.proto", fileDescriptor_f9ec101486218a7b) }
 
 var fileDescriptor_f9ec101486218a7b = []byte{
-	// 472 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x53, 0xdd, 0x6e, 0xd3, 0x30,
-	0x18, 0x25, 0x65, 0xed, 0xd2, 0x6f, 0xfc, 0x0c, 0x0b, 0x6d, 0xa6, 0x42, 0x51, 0x88, 0xb8, 0xe8,
-	0x05, 0x1a, 0x12, 0xbc, 0xc1, 0x00, 0xa1, 0x8a, 0x9b, 0x29, 0x03, 0x24, 0x2e, 0xbd, 0xf8, 0x53,
-	0x67, 0x35, 0xb6, 0x83, 0xed, 0x20, 0xf5, 0x41, 0x90, 0x78, 0x24, 0x2e, 0x79, 0x04, 0x54, 0xde,
-	0x82, 0x2b, 0x14, 0xd7, 0x19, 0x49, 0x5a, 0xed, 0xce, 0xe7, 0xf8, 0xc4, 0x3e, 0xdf, 0xf1, 0x09,
-	0x9c, 0x56, 0x46, 0x7f, 0x13, 0x1c, 0xcd, 0xcb, 0x76, 0x71, 0x56, 0x19, 0xed, 0x34, 0x89, 0x5b,
-	0x9c, 0xfd, 0x1d, 0xc1, 0xc9, 0x7b, 0x74, 0x17, 0x6c, 0x2d, 0x51, 0xb9, 0x8f, 0x7a, 0x85, 0x2a,
-	0xc7, 0xaf, 0x35, 0x5a, 0x47, 0x4e, 0x60, 0xc2, 0xa4, 0xae, 0x95, 0xa3, 0x51, 0x1a, 0xcd, 0xc7,
-	0x79, 0x40, 0x64, 0x06, 0x71, 0x51, 0x1b, 0x83, 0xaa, 0x58, 0xd3, 0x51, 0x1a, 0xcd, 0xa7, 0xf9,
-	0x0d, 0x26, 0xcf, 0xe1, 0x7e, 0x51, 0x5b, 0xa7, 0x25, 0x9a, 0x77, 0x92, 0x89, 0x92, 0xde, 0xf5,
-	0x82, 0x3e, 0xd9, 0x55, 0x5d, 0x5c, 0x6b, 0x85, 0xf4, 0xa0, 0xaf, 0xf2, 0x24, 0x79, 0x01, 0x8f,
-	0x84, 0x2a, 0xca, 0x9a, 0xe3, 0x1b, 0x2d, 0xa5, 0xb0, 0x56, 0x68, 0x45, 0xc7, 0x69, 0x34, 0x8f,
-	0xf3, 0xdd, 0x8d, 0xc6, 0xad, 0xc1, 0x2b, 0x51, 0x96, 0x74, 0xe2, 0x25, 0x01, 0x35, 0xbc, 0xbd,
-	0xd6, 0xd5, 0x82, 0xd3, 0x43, 0x7f, 0x49, 0x40, 0xe4, 0x29, 0x4c, 0x2d, 0x16, 0x06, 0xdd, 0x07,
-	0x5c, 0xd3, 0xd8, 0x6f, 0xfd, 0x27, 0x48, 0x06, 0xf7, 0xda, 0x88, 0x2e, 0xcb, 0x7a, 0x49, 0xa7,
-	0x5e, 0xd0, 0xe3, 0x48, 0x02, 0xe0, 0x0c, 0x2b, 0x56, 0x42, 0x2d, 0x17, 0x9c, 0x82, 0x57, 0x74,
-	0x18, 0x92, 0xc2, 0x11, 0x47, 0x5b, 0x18, 0x51, 0xb9, 0xc6, 0xf9, 0x91, 0x17, 0x74, 0xa9, 0x6c,
-	0x05, 0xa7, 0x3b, 0xd9, 0xdb, 0x4a, 0x2b, 0x8b, 0xe4, 0x31, 0x8c, 0x5d, 0x43, 0xf8, 0xec, 0xa7,
-	0xf9, 0x16, 0x34, 0x47, 0x1a, 0xe4, 0xc2, 0x60, 0xe1, 0x3e, 0x99, 0x32, 0xa4, 0xdf, 0xa5, 0x08,
-	0x85, 0x43, 0x89, 0xd6, 0xb2, 0x25, 0x86, 0xe8, 0x5b, 0x98, 0x3d, 0xe9, 0x5e, 0x76, 0xe9, 0x98,
-	0xab, 0x6d, 0x78, 0xe9, 0x6c, 0x06, 0x74, 0x77, 0x6b, 0x6b, 0x24, 0x9b, 0x6f, 0xfb, 0x11, 0x06,
-	0x3f, 0x5f, 0x2f, 0xde, 0xb6, 0xfd, 0x78, 0x00, 0x23, 0xc1, 0x43, 0x37, 0x46, 0x82, 0xb7, 0xd3,
-	0xf4, 0x94, 0x61, 0x9a, 0x81, 0xb4, 0x99, 0x8e, 0x95, 0x82, 0xd9, 0x30, 0xc1, 0x16, 0x10, 0x02,
-	0x07, 0x8a, 0xc9, 0xd6, 0xb8, 0x5f, 0x37, 0xcf, 0xc7, 0xb5, 0x64, 0x42, 0x85, 0x8e, 0x04, 0xf4,
-	0xea, 0xfb, 0x08, 0xe2, 0xf6, 0x2a, 0xf2, 0x19, 0x1e, 0x0e, 0x72, 0x24, 0xe9, 0xd9, 0x4d, 0xe5,
-	0xf7, 0xd7, 0x7b, 0xf6, 0xec, 0x16, 0x45, 0xb0, 0xfd, 0x05, 0x8e, 0x87, 0xb9, 0x90, 0xbd, 0x9f,
-	0xf5, 0xe2, 0x9c, 0x65, 0xb7, 0x49, 0xc2, 0xd1, 0xc1, 0x72, 0x27, 0xac, 0xa1, 0xe5, 0xdd, 0xc4,
-	0x87, 0x96, 0xf7, 0x24, 0x7d, 0x7e, 0xfc, 0x73, 0x93, 0x44, 0xbf, 0x36, 0x49, 0xf4, 0x7b, 0x93,
-	0x44, 0x3f, 0xfe, 0x24, 0x77, 0xae, 0x26, 0xfe, 0x97, 0x7f, 0xfd, 0x2f, 0x00, 0x00, 0xff, 0xff,
-	0x99, 0x29, 0x5b, 0xc0, 0x0d, 0x04, 0x00, 0x00,
+	// 534 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x54, 0xdd, 0x6e, 0xd3, 0x30,
+	0x14, 0x26, 0x65, 0xed, 0xda, 0x33, 0x36, 0x86, 0x05, 0x9b, 0xa9, 0x46, 0x55, 0x22, 0x7e, 0x7a,
+	0x81, 0x86, 0x04, 0x12, 0x0f, 0x30, 0x06, 0xa8, 0xe2, 0x66, 0xea, 0x00, 0x89, 0x2b, 0xe4, 0xc5,
+	0x47, 0xad, 0xd5, 0xc4, 0x0e, 0xb6, 0x83, 0xd4, 0x37, 0xe1, 0x91, 0xb8, 0xe4, 0x11, 0x50, 0x79,
+	0x0b, 0x6e, 0x40, 0x71, 0x9c, 0x2d, 0x49, 0x4b, 0x77, 0x97, 0xef, 0xf3, 0x67, 0xfb, 0x3b, 0xe7,
+	0x3b, 0x0e, 0x1c, 0xa6, 0x5a, 0x7d, 0x13, 0x1c, 0xf5, 0xf3, 0xf2, 0xe3, 0x38, 0xd5, 0xca, 0x2a,
+	0xd2, 0x2d, 0x71, 0xf8, 0xa7, 0x05, 0x07, 0xef, 0xd0, 0x9e, 0xb1, 0x45, 0x82, 0xd2, 0x7e, 0x50,
+	0x73, 0x94, 0x13, 0xfc, 0x9a, 0xa1, 0xb1, 0xe4, 0x00, 0x3a, 0x2c, 0x51, 0x99, 0xb4, 0x34, 0x18,
+	0x06, 0xa3, 0xf6, 0xc4, 0x23, 0xd2, 0x87, 0x6e, 0x94, 0x69, 0x8d, 0x32, 0x5a, 0xd0, 0xd6, 0x30,
+	0x18, 0xf5, 0x26, 0x97, 0x98, 0x3c, 0x82, 0xdd, 0x28, 0x33, 0x56, 0x25, 0xa8, 0xdf, 0x24, 0x4c,
+	0xc4, 0xf4, 0xa6, 0x13, 0xd4, 0xc9, 0xaa, 0xea, 0x6c, 0xa6, 0x24, 0xd2, 0xad, 0xba, 0xca, 0x91,
+	0xe4, 0x19, 0xdc, 0x11, 0x32, 0x8a, 0x33, 0x8e, 0xaf, 0x55, 0x92, 0x08, 0x63, 0x84, 0x92, 0xb4,
+	0x3d, 0x0c, 0x46, 0xdd, 0xc9, 0xea, 0x42, 0xee, 0x56, 0xe3, 0x85, 0x88, 0x63, 0xda, 0x71, 0x12,
+	0x8f, 0x72, 0xde, 0xcc, 0x54, 0x3a, 0xe6, 0x74, 0xdb, 0x5d, 0xe2, 0x11, 0x39, 0x82, 0x9e, 0xc1,
+	0x48, 0xa3, 0x7d, 0x8f, 0x0b, 0xda, 0x75, 0x4b, 0x57, 0x04, 0x09, 0xe1, 0x56, 0xd9, 0xa2, 0xf3,
+	0x38, 0x9b, 0xd2, 0x9e, 0x13, 0xd4, 0x38, 0x32, 0x00, 0xb0, 0x9a, 0x45, 0x73, 0x21, 0xa7, 0x63,
+	0x4e, 0xc1, 0x29, 0x2a, 0x0c, 0x19, 0xc2, 0x0e, 0x47, 0x13, 0x69, 0x91, 0xda, 0xdc, 0xf9, 0x8e,
+	0x13, 0x54, 0xa9, 0x70, 0x0e, 0x87, 0x2b, 0xbd, 0x37, 0xa9, 0x92, 0x06, 0xc9, 0x5d, 0x68, 0xdb,
+	0x9c, 0x70, 0xbd, 0xef, 0x4d, 0x0a, 0x90, 0x1f, 0xa9, 0x91, 0x0b, 0x8d, 0x91, 0xfd, 0xa8, 0x63,
+	0xdf, 0xfd, 0x2a, 0x45, 0x28, 0x6c, 0x27, 0x68, 0x0c, 0x9b, 0xa2, 0x6f, 0x7d, 0x09, 0xc3, 0xfb,
+	0xd5, 0xcb, 0xce, 0x2d, 0xb3, 0x99, 0xf1, 0x49, 0x87, 0x7d, 0xa0, 0xab, 0x4b, 0x85, 0x91, 0x70,
+	0x54, 0xcc, 0x87, 0x2f, 0xfc, 0x64, 0x31, 0x3e, 0x2d, 0xe7, 0x63, 0x0f, 0x5a, 0x82, 0xfb, 0xd9,
+	0x68, 0x09, 0x5e, 0x56, 0x53, 0x53, 0xfa, 0x6a, 0x1a, 0xd2, 0xbc, 0x3a, 0x16, 0x0b, 0x66, 0x7c,
+	0x05, 0x05, 0x20, 0x04, 0xb6, 0x24, 0x4b, 0x4a, 0xe3, 0xee, 0x3b, 0x8f, 0x8f, 0xab, 0x84, 0x09,
+	0xe9, 0x67, 0xc4, 0xa3, 0xf0, 0x15, 0x1c, 0x9d, 0x62, 0xa4, 0x38, 0xf2, 0xf2, 0xc2, 0x5a, 0x49,
+	0x2e, 0x76, 0x47, 0xf8, 0x06, 0x7a, 0x14, 0xbe, 0x85, 0x07, 0xff, 0xd9, 0xe7, 0xad, 0x3e, 0x86,
+	0x3d, 0x5e, 0x08, 0xbe, 0xd4, 0x0e, 0xd8, 0xf5, 0x6c, 0x21, 0x7f, 0xf1, 0xb7, 0x05, 0xdd, 0xf2,
+	0x04, 0xf2, 0x09, 0x6e, 0x37, 0x72, 0x24, 0xc3, 0xe3, 0xcb, 0x27, 0xb7, 0xfe, 0x79, 0xf5, 0x1f,
+	0x6e, 0x50, 0x78, 0x2f, 0x9f, 0x61, 0xbf, 0x99, 0x0b, 0x59, 0xbb, 0xad, 0x56, 0x7b, 0x3f, 0xdc,
+	0x24, 0xf1, 0x47, 0x7b, 0xcb, 0x95, 0xb0, 0x9a, 0x96, 0x57, 0x13, 0x6f, 0x5a, 0x5e, 0x97, 0xf4,
+	0x0c, 0xee, 0xad, 0xed, 0x2f, 0x79, 0x72, 0xb5, 0x77, 0x53, 0x70, 0xfd, 0xa7, 0xd7, 0xea, 0x8a,
+	0x9b, 0x4e, 0xf6, 0x7f, 0x2c, 0x07, 0xc1, 0xcf, 0xe5, 0x20, 0xf8, 0xb5, 0x1c, 0x04, 0xdf, 0x7f,
+	0x0f, 0x6e, 0x5c, 0x74, 0xdc, 0xcf, 0xed, 0xe5, 0xbf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa6, 0xaf,
+	0x60, 0xe4, 0xf7, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -472,6 +572,7 @@ type ProviderClient interface {
 	GetPaymentToken(ctx context.Context, in *GetPaymentTokenRequest, opts ...grpc.CallOption) (*GetPaymentTokenResponse, error)
 	GetPaymentStatus(ctx context.Context, in *GetPaymentStatusRequest, opts ...grpc.CallOption) (*GetPaymentStatusResponse, error)
 	GetProviderByID(ctx context.Context, in *GetProviderByIDRequest, opts ...grpc.CallOption) (*GetProviderByIDResponse, error)
+	DecodedProviderStatus(ctx context.Context, in *DecodedProviderStatusRequest, opts ...grpc.CallOption) (*DecodedProviderStatusResponse, error)
 }
 
 type providerClient struct {
@@ -509,11 +610,21 @@ func (c *providerClient) GetProviderByID(ctx context.Context, in *GetProviderByI
 	return out, nil
 }
 
+func (c *providerClient) DecodedProviderStatus(ctx context.Context, in *DecodedProviderStatusRequest, opts ...grpc.CallOption) (*DecodedProviderStatusResponse, error) {
+	out := new(DecodedProviderStatusResponse)
+	err := c.cc.Invoke(ctx, "/provider.Provider/DecodedProviderStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServer is the server API for Provider service.
 type ProviderServer interface {
 	GetPaymentToken(context.Context, *GetPaymentTokenRequest) (*GetPaymentTokenResponse, error)
 	GetPaymentStatus(context.Context, *GetPaymentStatusRequest) (*GetPaymentStatusResponse, error)
 	GetProviderByID(context.Context, *GetProviderByIDRequest) (*GetProviderByIDResponse, error)
+	DecodedProviderStatus(context.Context, *DecodedProviderStatusRequest) (*DecodedProviderStatusResponse, error)
 }
 
 // UnimplementedProviderServer can be embedded to have forward compatible implementations.
@@ -528,6 +639,9 @@ func (*UnimplementedProviderServer) GetPaymentStatus(ctx context.Context, req *G
 }
 func (*UnimplementedProviderServer) GetProviderByID(ctx context.Context, req *GetProviderByIDRequest) (*GetProviderByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProviderByID not implemented")
+}
+func (*UnimplementedProviderServer) DecodedProviderStatus(ctx context.Context, req *DecodedProviderStatusRequest) (*DecodedProviderStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DecodedProviderStatus not implemented")
 }
 
 func RegisterProviderServer(s *grpc.Server, srv ProviderServer) {
@@ -588,6 +702,24 @@ func _Provider_GetProviderByID_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Provider_DecodedProviderStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DecodedProviderStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServer).DecodedProviderStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/provider.Provider/DecodedProviderStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServer).DecodedProviderStatus(ctx, req.(*DecodedProviderStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Provider_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "provider.Provider",
 	HandlerType: (*ProviderServer)(nil),
@@ -603,6 +735,10 @@ var _Provider_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetProviderByID",
 			Handler:    _Provider_GetProviderByID_Handler,
+		},
+		{
+			MethodName: "DecodedProviderStatus",
+			Handler:    _Provider_DecodedProviderStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -904,6 +1040,74 @@ func (m *GetProviderByIDResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *DecodedProviderStatusRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DecodedProviderStatusRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DecodedProviderStatusRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Status) > 0 {
+		i -= len(m.Status)
+		copy(dAtA[i:], m.Status)
+		i = encodeVarintProvider(dAtA, i, uint64(len(m.Status)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *DecodedProviderStatusResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DecodedProviderStatusResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DecodedProviderStatusResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.DecodedStatus) > 0 {
+		i -= len(m.DecodedStatus)
+		copy(dAtA[i:], m.DecodedStatus)
+		i = encodeVarintProvider(dAtA, i, uint64(len(m.DecodedStatus)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintProvider(dAtA []byte, offset int, v uint64) int {
 	offset -= sovProvider(v)
 	base := offset
@@ -1049,6 +1253,38 @@ func (m *GetProviderByIDResponse) Size() (n int) {
 		n += 1 + l + sovProvider(uint64(l))
 	}
 	l = len(m.Domain)
+	if l > 0 {
+		n += 1 + l + sovProvider(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *DecodedProviderStatusRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Status)
+	if l > 0 {
+		n += 1 + l + sovProvider(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *DecodedProviderStatusResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.DecodedStatus)
 	if l > 0 {
 		n += 1 + l + sovProvider(uint64(l))
 	}
@@ -1892,6 +2128,172 @@ func (m *GetProviderByIDResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Domain = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProvider(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProvider
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *DecodedProviderStatusRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProvider
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: DecodedProviderStatusRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: DecodedProviderStatusRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Status", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProvider
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProvider
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProvider
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Status = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProvider(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProvider
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *DecodedProviderStatusResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProvider
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: DecodedProviderStatusResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: DecodedProviderStatusResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DecodedStatus", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProvider
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProvider
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProvider
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DecodedStatus = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
