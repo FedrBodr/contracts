@@ -19,6 +19,7 @@ message GetPaymentTokenRequest {
   string secretKey = 8;
   string providerSlug = 9;
   string trackingId = 10;
+  string description = 11;
 }
 
 message GetPaymentTokenResponse {
