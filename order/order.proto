@@ -28,16 +28,14 @@ message CreateOrderRequest{
   string customer_email = 6;
   string customer_phone = 7;
   string description = 8;
-  string tracking_id = 9;
   string status = 10;
-  string acquirefy_uid = 11;
   string provider_uid = 12;
   string merchant_tracking_uid = 13;
 }
 
 message CreateOrderResponse{
   int32 id = 1;
-  //
+  string acquirefy_uid = 2;
 }
 
 message SetOrderStatusRequest{
@@ -46,7 +44,7 @@ message SetOrderStatusRequest{
 }
 
 message OrderResponse{
-
+  int32 id = 1;
 }
 
 message Request {
