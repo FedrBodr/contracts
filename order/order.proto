@@ -42,7 +42,7 @@ message CreateOrderResponse{
 
 message SetOrderStatusRequest{
   int32 id = 1;
-  int32 newStatus = 2;
+  string newStatus = 2;
 }
 
 message SetOrderStatusResponse{
