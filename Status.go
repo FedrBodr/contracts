@@ -1,5 +1,5 @@
 //go:generate go-enum -f=$GOFILE
-package status
+package contracts
 
 // Status is an enumeration of commented values
 /*
