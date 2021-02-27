@@ -1,5 +1,5 @@
 //go:generate go-enum -f=$GOFILE
-package models
+package status
 
 // Status is an enumeration of commented values
 /*
