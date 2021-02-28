@@ -7,6 +7,7 @@ service Provider {
   rpc GetPaymentStatus(GetPaymentStatusRequest) returns (GetPaymentStatusResponse);
   rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDResponse);
   rpc DecodedProviderStatus(DecodedProviderStatusRequest) returns (DecodedProviderStatusResponse);
+  rpc DecodeProviderNotification(DecodeProviderNotificationRequest) returns (DecodeProviderNotificationResponse);
 }
 
 message GetPaymentTokenRequest {
@@ -54,4 +55,15 @@ message DecodedProviderStatusRequest{
 
 message DecodedProviderStatusResponse{
   string decoded_status = 1;
+}
+
+message DecodeProviderNotificationRequest{
+  bytes data = 1;
+}
+
+message DecodeProviderNotificationResponse{
+  string status = 1;
+  string message = 2;
+  string tracking_id = 3;
+  int32 amount = 4;
 }
