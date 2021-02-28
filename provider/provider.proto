@@ -3,16 +3,55 @@ syntax = "proto3";
 package provider;
 
 service Provider {
-  rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDResponse);
+  rpc GetPaymentToken(GetPaymentTokenRequest) returns (GetPaymentTokenResponse);
+  rpc GetPaymentStatus(GetPaymentStatusRequest) returns (GetPaymentStatusResponse);
+  rpc DecodedProviderStatus(DecodedProviderStatusRequest) returns (DecodedProviderStatusResponse);
+  rpc DecodeProviderNotification(DecodeProviderNotificationRequest) returns (DecodeProviderNotificationResponse);
 }
 
-message GetProviderByIDRequest{
-  int32 id = 1;
+message GetPaymentTokenRequest {
+  int32 amount = 1;
+  string currency = 2;
+  string customerEmail = 3;
+  string customerPhone = 4;
+  bool includeCommission = 5;
+  bool rebill = 6;
+  string shopId = 7;
+  string secretKey = 8;
+  string providerSlug = 9;
+  string trackingId = 10;
+  string description = 11;
 }
 
-message GetProviderByIDResponse{
-  int32 id = 1;
-  string alias = 2;
-  string name = 3;
-  string domain = 4;
+message GetPaymentTokenResponse {
+  string token = 1;
+  string redirectUrl = 2;
+  string message = 3;
+}
+
+message GetPaymentStatusRequest{
+
+}
+
+message GetPaymentStatusResponse {
+
+}
+
+message DecodedProviderStatusRequest{
+  string status = 1;
+}
+
+message DecodedProviderStatusResponse{
+  string decoded_status = 1;
+}
+
+message DecodeProviderNotificationRequest{
+  bytes data = 1;
+}
+
+message DecodeProviderNotificationResponse{
+  string status = 1;
+  string message = 2;
+  string tracking_id = 3;
+  int32 amount = 4;
 }

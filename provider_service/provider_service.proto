@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package provider_service;
+
+service ProviderService {
+  rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDResponse);
+}
+
+message GetProviderByIDRequest{
+  int32 id = 1;
+}
+
+message GetProviderByIDResponse{
+  int32 id = 1;
+  string alias = 2;
+  string name = 3;
+  string domain = 4;
+}
