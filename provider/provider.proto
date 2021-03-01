@@ -30,7 +30,10 @@ message GetPaymentTokenResponse {
 }
 
 message GetPaymentStatusRequest{
-  string token =1;
+  string token = 1;
+  string shopId = 2;
+  string secretKey = 3;
+  string providerSlug = 4;
 }
 
 message GetPaymentStatusResponse {
