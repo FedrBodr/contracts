@@ -47,6 +47,7 @@ message GetPaymentStatusResponse {
 
 message DecodedProviderStatusRequest{
   string status = 1;
+  string providerSlug = 4;
 }
 
 message DecodedProviderStatusResponse{
