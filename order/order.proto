@@ -6,7 +6,7 @@ service Order {
   rpc GetOrderById(ByIdRequest) returns (OrderResponse);
   rpc GetOrderByAcquirefyUID(GetOrderByAcquirefyUIDRequest) returns (GetOrderByAcquirefyUIDResponse);
   rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
-  rpc GetOrdersByMerchant(Request) returns (Response);
+  rpc GetOrdersByMerchant(GetOrdersByMerchantRequest) returns (GetOrdersByMerchantResponse);
   rpc SetOrderStatus(SetOrderStatusRequest) returns (SetOrderStatusResponse);
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
 }
@@ -81,7 +81,15 @@ message Response {
   string message = 3;
 }
 
+message GetOrdersByMerchantRequest{
+  int32 merchant_id = 1;
+}
+
+message GetOrdersByMerchantResponse{
+  repeated OrderElement orders = 1;
+}
+
 message GetOrdersRequest{}
 message GetOrdersResponse{
-  repeated OrderElement order = 1;
+  repeated OrderElement orders = 1;
 }
