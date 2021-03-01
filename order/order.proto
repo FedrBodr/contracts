@@ -50,8 +50,7 @@ message SetOrderStatusRequest{
 }
 
 message SetOrderStatusResponse{
-  int32 id = 1;
-  string newStatus = 2;
+  OrderElement order = 1 ;
 }
 
 message OrderResponse{
