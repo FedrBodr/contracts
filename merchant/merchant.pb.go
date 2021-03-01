@@ -26,33 +26,25 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Request struct {
-	Amount               int32    `protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
-	Currency             string   `protobuf:"bytes,2,opt,name=currency,proto3" json:"currency,omitempty"`
-	CustomerEmail        string   `protobuf:"bytes,3,opt,name=customerEmail,proto3" json:"customerEmail,omitempty"`
-	CustomerPhone        string   `protobuf:"bytes,4,opt,name=customerPhone,proto3" json:"customerPhone,omitempty"`
-	IncludeCommission    bool     `protobuf:"varint,5,opt,name=includeCommission,proto3" json:"includeCommission,omitempty"`
-	Rebill               bool     `protobuf:"varint,6,opt,name=rebill,proto3" json:"rebill,omitempty"`
-	ShopId               string   `protobuf:"bytes,7,opt,name=shopId,proto3" json:"shopId,omitempty"`
-	SecretKey            string   `protobuf:"bytes,8,opt,name=secretKey,proto3" json:"secretKey,omitempty"`
-	ProviderSlug         string   `protobuf:"bytes,9,opt,name=providerSlug,proto3" json:"providerSlug,omitempty"`
+type GetMerchantCredentialsRequest struct {
+	MerchantId           int32    `protobuf:"varint,1,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Request) Reset()         { *m = Request{} }
-func (m *Request) String() string { return proto.CompactTextString(m) }
-func (*Request) ProtoMessage()    {}
-func (*Request) Descriptor() ([]byte, []int) {
+func (m *GetMerchantCredentialsRequest) Reset()         { *m = GetMerchantCredentialsRequest{} }
+func (m *GetMerchantCredentialsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetMerchantCredentialsRequest) ProtoMessage()    {}
+func (*GetMerchantCredentialsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3a7b1c9034e23211, []int{0}
 }
-func (m *Request) XXX_Unmarshal(b []byte) error {
+func (m *GetMerchantCredentialsRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *GetMerchantCredentialsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_Request.Marshal(b, m, deterministic)
+		return xxx_messageInfo_GetMerchantCredentialsRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -62,101 +54,49 @@ func (m *Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *Request) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Request.Merge(m, src)
+func (m *GetMerchantCredentialsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetMerchantCredentialsRequest.Merge(m, src)
 }
-func (m *Request) XXX_Size() int {
+func (m *GetMerchantCredentialsRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *Request) XXX_DiscardUnknown() {
-	xxx_messageInfo_Request.DiscardUnknown(m)
+func (m *GetMerchantCredentialsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetMerchantCredentialsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Request proto.InternalMessageInfo
+var xxx_messageInfo_GetMerchantCredentialsRequest proto.InternalMessageInfo
 
-func (m *Request) GetAmount() int32 {
+func (m *GetMerchantCredentialsRequest) GetMerchantId() int32 {
 	if m != nil {
-		return m.Amount
+		return m.MerchantId
 	}
 	return 0
 }
 
-func (m *Request) GetCurrency() string {
-	if m != nil {
-		return m.Currency
-	}
-	return ""
-}
-
-func (m *Request) GetCustomerEmail() string {
-	if m != nil {
-		return m.CustomerEmail
-	}
-	return ""
-}
-
-func (m *Request) GetCustomerPhone() string {
-	if m != nil {
-		return m.CustomerPhone
-	}
-	return ""
-}
-
-func (m *Request) GetIncludeCommission() bool {
-	if m != nil {
-		return m.IncludeCommission
-	}
-	return false
-}
-
-func (m *Request) GetRebill() bool {
-	if m != nil {
-		return m.Rebill
-	}
-	return false
-}
-
-func (m *Request) GetShopId() string {
-	if m != nil {
-		return m.ShopId
-	}
-	return ""
-}
-
-func (m *Request) GetSecretKey() string {
-	if m != nil {
-		return m.SecretKey
-	}
-	return ""
-}
-
-func (m *Request) GetProviderSlug() string {
-	if m != nil {
-		return m.ProviderSlug
-	}
-	return ""
-}
-
-type Response struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	RedirectUrl          string   `protobuf:"bytes,2,opt,name=redirectUrl,proto3" json:"redirectUrl,omitempty"`
+type GetMerchantCredentialsResponse struct {
+	ReturnUrl            string   `protobuf:"bytes,1,opt,name=return_url,json=returnUrl,proto3" json:"return_url,omitempty"`
+	SuccessUrl           string   `protobuf:"bytes,2,opt,name=success_url,json=successUrl,proto3" json:"success_url,omitempty"`
+	DeclineUrl           string   `protobuf:"bytes,3,opt,name=decline_url,json=declineUrl,proto3" json:"decline_url,omitempty"`
+	FailUrl              string   `protobuf:"bytes,4,opt,name=fail_url,json=failUrl,proto3" json:"fail_url,omitempty"`
+	CancelUrl            string   `protobuf:"bytes,5,opt,name=cancel_url,json=cancelUrl,proto3" json:"cancel_url,omitempty"`
+	NotificationUrl      string   `protobuf:"bytes,6,opt,name=notification_url,json=notificationUrl,proto3" json:"notification_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Response) Reset()         { *m = Response{} }
-func (m *Response) String() string { return proto.CompactTextString(m) }
-func (*Response) ProtoMessage()    {}
-func (*Response) Descriptor() ([]byte, []int) {
+func (m *GetMerchantCredentialsResponse) Reset()         { *m = GetMerchantCredentialsResponse{} }
+func (m *GetMerchantCredentialsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetMerchantCredentialsResponse) ProtoMessage()    {}
+func (*GetMerchantCredentialsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3a7b1c9034e23211, []int{1}
 }
-func (m *Response) XXX_Unmarshal(b []byte) error {
+func (m *GetMerchantCredentialsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *GetMerchantCredentialsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_Response.Marshal(b, m, deterministic)
+		return xxx_messageInfo_GetMerchantCredentialsResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -166,62 +106,87 @@ func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *Response) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response.Merge(m, src)
+func (m *GetMerchantCredentialsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetMerchantCredentialsResponse.Merge(m, src)
 }
-func (m *Response) XXX_Size() int {
+func (m *GetMerchantCredentialsResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *Response) XXX_DiscardUnknown() {
-	xxx_messageInfo_Response.DiscardUnknown(m)
+func (m *GetMerchantCredentialsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetMerchantCredentialsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Response proto.InternalMessageInfo
+var xxx_messageInfo_GetMerchantCredentialsResponse proto.InternalMessageInfo
 
-func (m *Response) GetToken() string {
+func (m *GetMerchantCredentialsResponse) GetReturnUrl() string {
 	if m != nil {
-		return m.Token
+		return m.ReturnUrl
 	}
 	return ""
 }
 
-func (m *Response) GetRedirectUrl() string {
+func (m *GetMerchantCredentialsResponse) GetSuccessUrl() string {
 	if m != nil {
-		return m.RedirectUrl
+		return m.SuccessUrl
+	}
+	return ""
+}
+
+func (m *GetMerchantCredentialsResponse) GetDeclineUrl() string {
+	if m != nil {
+		return m.DeclineUrl
+	}
+	return ""
+}
+
+func (m *GetMerchantCredentialsResponse) GetFailUrl() string {
+	if m != nil {
+		return m.FailUrl
+	}
+	return ""
+}
+
+func (m *GetMerchantCredentialsResponse) GetCancelUrl() string {
+	if m != nil {
+		return m.CancelUrl
+	}
+	return ""
+}
+
+func (m *GetMerchantCredentialsResponse) GetNotificationUrl() string {
+	if m != nil {
+		return m.NotificationUrl
 	}
 	return ""
 }
 
 func init() {
-	proto.RegisterType((*Request)(nil), "merchant.Request")
-	proto.RegisterType((*Response)(nil), "merchant.Response")
+	proto.RegisterType((*GetMerchantCredentialsRequest)(nil), "merchant.GetMerchantCredentialsRequest")
+	proto.RegisterType((*GetMerchantCredentialsResponse)(nil), "merchant.GetMerchantCredentialsResponse")
 }
 
 func init() { proto.RegisterFile("merchant/merchant.proto", fileDescriptor_3a7b1c9034e23211) }
 
 var fileDescriptor_3a7b1c9034e23211 = []byte{
-	// 325 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x91, 0x51, 0x4a, 0x2b, 0x31,
-	0x14, 0x86, 0x6f, 0x7a, 0x6f, 0xdb, 0x99, 0x73, 0x2b, 0xd8, 0x20, 0x1a, 0x8a, 0x0c, 0x43, 0xf1,
-	0xa1, 0x0f, 0x52, 0x41, 0x71, 0x01, 0x56, 0x44, 0x8a, 0x88, 0x32, 0xe2, 0x02, 0xda, 0xcc, 0xd1,
-	0x06, 0x67, 0x92, 0xf1, 0x24, 0x23, 0x74, 0x27, 0x6e, 0xc1, 0x9d, 0xf8, 0xe8, 0x12, 0xa4, 0x6e,
-	0x44, 0x9a, 0x4e, 0x6b, 0x8b, 0x6f, 0xf9, 0xbe, 0xf3, 0xc3, 0x09, 0xe7, 0x87, 0xbd, 0x1c, 0x49,
-	0x4e, 0x46, 0xda, 0x1d, 0x2d, 0x1f, 0xfd, 0x82, 0x8c, 0x33, 0x3c, 0x58, 0x72, 0xf7, 0xad, 0x06,
-	0xcd, 0x04, 0x9f, 0x4b, 0xb4, 0x8e, 0xef, 0x42, 0x63, 0x94, 0x9b, 0x52, 0x3b, 0xc1, 0x62, 0xd6,
-	0xab, 0x27, 0x15, 0xf1, 0x0e, 0x04, 0xb2, 0x24, 0x42, 0x2d, 0xa7, 0xa2, 0x16, 0xb3, 0x5e, 0x98,
-	0xac, 0x98, 0x1f, 0xc0, 0x96, 0x2c, 0xad, 0x33, 0x39, 0xd2, 0x45, 0x3e, 0x52, 0x99, 0xf8, 0xeb,
-	0x03, 0x9b, 0x72, 0x3d, 0x75, 0x3b, 0x31, 0x1a, 0xc5, 0xbf, 0xcd, 0x94, 0x97, 0xfc, 0x10, 0xda,
-	0x4a, 0xcb, 0xac, 0x4c, 0xf1, 0xdc, 0xe4, 0xb9, 0xb2, 0x56, 0x19, 0x2d, 0xea, 0x31, 0xeb, 0x05,
-	0xc9, 0xef, 0xc1, 0xfc, 0xb7, 0x84, 0x63, 0x95, 0x65, 0xa2, 0xe1, 0x23, 0x15, 0xcd, 0xbd, 0x9d,
-	0x98, 0x62, 0x98, 0x8a, 0xa6, 0x5f, 0x52, 0x11, 0xdf, 0x87, 0xd0, 0xa2, 0x24, 0x74, 0x57, 0x38,
-	0x15, 0x81, 0x1f, 0xfd, 0x08, 0xde, 0x85, 0x56, 0x41, 0xe6, 0x45, 0xa5, 0x48, 0x77, 0x59, 0xf9,
-	0x28, 0x42, 0x1f, 0xd8, 0x70, 0xdd, 0x01, 0x04, 0x09, 0xda, 0xc2, 0x68, 0x8b, 0x7c, 0x07, 0xea,
-	0xce, 0x3c, 0xa1, 0xf6, 0xa7, 0x0a, 0x93, 0x05, 0xf0, 0x18, 0xfe, 0x13, 0xa6, 0x8a, 0x50, 0xba,
-	0x7b, 0xca, 0xaa, 0x63, 0xad, 0xab, 0xe3, 0x33, 0x08, 0xae, 0xab, 0xdb, 0xf3, 0x53, 0x68, 0x5d,
-	0xa2, 0xbb, 0xa1, 0x14, 0x69, 0xa8, 0x1f, 0x0c, 0x6f, 0xf7, 0x57, 0x35, 0x55, 0x95, 0x74, 0xf8,
-	0xba, 0x5a, 0xac, 0x1e, 0x6c, 0xbf, 0xcf, 0x22, 0xf6, 0x31, 0x8b, 0xd8, 0xe7, 0x2c, 0x62, 0xaf,
-	0x5f, 0xd1, 0x9f, 0x71, 0xc3, 0xb7, 0x7a, 0xf2, 0x1d, 0x00, 0x00, 0xff, 0xff, 0x92, 0xbd, 0x79,
-	0xba, 0xf0, 0x01, 0x00, 0x00,
+	// 275 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0xbd, 0x4a, 0x04, 0x31,
+	0x10, 0xc7, 0x8d, 0x7a, 0xe7, 0xde, 0x58, 0x78, 0xa4, 0xf0, 0x0b, 0x36, 0xca, 0x35, 0x9e, 0xcd,
+	0x09, 0xfa, 0x02, 0xa2, 0x85, 0x58, 0xd8, 0x2c, 0x5c, 0x7d, 0xc4, 0xec, 0x1c, 0x06, 0x63, 0xb2,
+	0x26, 0x59, 0x7c, 0x15, 0x1f, 0xc9, 0xd2, 0x47, 0x90, 0x15, 0x7c, 0x0e, 0x49, 0xb2, 0x11, 0x0b,
+	0x3f, 0xba, 0x9d, 0xff, 0xef, 0xc7, 0xcc, 0xce, 0x04, 0x76, 0x1e, 0xd0, 0x8a, 0x3b, 0xae, 0xfd,
+	0x49, 0xfe, 0x98, 0x35, 0xd6, 0x78, 0x43, 0x8b, 0x5c, 0x4f, 0xce, 0xa1, 0xbc, 0x42, 0x7f, 0xd3,
+	0x97, 0x97, 0x16, 0x6b, 0xd4, 0x5e, 0x72, 0xe5, 0x2a, 0x7c, 0x6c, 0xd1, 0x79, 0x7a, 0x00, 0x9b,
+	0x59, 0x5e, 0xc8, 0x7a, 0x97, 0x1c, 0x92, 0xe9, 0xa0, 0x82, 0x1c, 0x5d, 0xd7, 0x93, 0x0f, 0x02,
+	0xec, 0xb7, 0x16, 0xae, 0x31, 0xda, 0x21, 0x2d, 0x01, 0x2c, 0xfa, 0xd6, 0xea, 0x45, 0x6b, 0x55,
+	0x6c, 0x31, 0xaa, 0x46, 0x29, 0x99, 0x5b, 0x15, 0x46, 0xb8, 0x56, 0x08, 0x74, 0x2e, 0xf2, 0xd5,
+	0xc8, 0xa1, 0x8f, 0x7a, 0xa1, 0x46, 0xa1, 0xa4, 0xc6, 0x28, 0xac, 0x25, 0xa1, 0x8f, 0x82, 0xb0,
+	0x07, 0xc5, 0x92, 0x4b, 0x15, 0xe9, 0x7a, 0xa4, 0x1b, 0xa1, 0x0e, 0xa8, 0x04, 0x10, 0x5c, 0x0b,
+	0x4c, 0x70, 0x90, 0x66, 0xa7, 0x24, 0xe0, 0x63, 0x18, 0x6b, 0xe3, 0xe5, 0x52, 0x0a, 0xee, 0xa5,
+	0x49, 0x3f, 0x38, 0x8c, 0xd2, 0xd6, 0xf7, 0x7c, 0x6e, 0xd5, 0xe9, 0x13, 0x14, 0x79, 0x49, 0x7a,
+	0x0f, 0xdb, 0x3f, 0xef, 0x4c, 0x8f, 0x66, 0x5f, 0xb7, 0xfe, 0xf3, 0xb0, 0xfb, 0xd3, 0xff, 0xc5,
+	0x74, 0xbe, 0x8b, 0xf1, 0x4b, 0xc7, 0xc8, 0x6b, 0xc7, 0xc8, 0x5b, 0xc7, 0xc8, 0xf3, 0x3b, 0x5b,
+	0xb9, 0x1d, 0xc6, 0x67, 0x3c, 0xfb, 0x0c, 0x00, 0x00, 0xff, 0xff, 0x47, 0x66, 0x27, 0xfd, 0xe1,
+	0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -236,7 +201,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MerchantClient interface {
-	GetOrderInfo(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	GetMerchantCredentials(ctx context.Context, in *GetMerchantCredentialsRequest, opts ...grpc.CallOption) (*GetMerchantCredentialsResponse, error)
 }
 
 type merchantClient struct {
@@ -247,9 +212,9 @@ func NewMerchantClient(cc *grpc.ClientConn) MerchantClient {
 	return &merchantClient{cc}
 }
 
-func (c *merchantClient) GetOrderInfo(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
-	err := c.cc.Invoke(ctx, "/merchant.Merchant/GetOrderInfo", in, out, opts...)
+func (c *merchantClient) GetMerchantCredentials(ctx context.Context, in *GetMerchantCredentialsRequest, opts ...grpc.CallOption) (*GetMerchantCredentialsResponse, error) {
+	out := new(GetMerchantCredentialsResponse)
+	err := c.cc.Invoke(ctx, "/merchant.Merchant/GetMerchantCredentials", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -258,35 +223,35 @@ func (c *merchantClient) GetOrderInfo(ctx context.Context, in *Request, opts ...
 
 // MerchantServer is the server API for Merchant service.
 type MerchantServer interface {
-	GetOrderInfo(context.Context, *Request) (*Response, error)
+	GetMerchantCredentials(context.Context, *GetMerchantCredentialsRequest) (*GetMerchantCredentialsResponse, error)
 }
 
 // UnimplementedMerchantServer can be embedded to have forward compatible implementations.
 type UnimplementedMerchantServer struct {
 }
 
-func (*UnimplementedMerchantServer) GetOrderInfo(ctx context.Context, req *Request) (*Response, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOrderInfo not implemented")
+func (*UnimplementedMerchantServer) GetMerchantCredentials(ctx context.Context, req *GetMerchantCredentialsRequest) (*GetMerchantCredentialsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMerchantCredentials not implemented")
 }
 
 func RegisterMerchantServer(s *grpc.Server, srv MerchantServer) {
 	s.RegisterService(&_Merchant_serviceDesc, srv)
 }
 
-func _Merchant_GetOrderInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Request)
+func _Merchant_GetMerchantCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMerchantCredentialsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MerchantServer).GetOrderInfo(ctx, in)
+		return srv.(MerchantServer).GetMerchantCredentials(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/merchant.Merchant/GetOrderInfo",
+		FullMethod: "/merchant.Merchant/GetMerchantCredentials",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MerchantServer).GetOrderInfo(ctx, req.(*Request))
+		return srv.(MerchantServer).GetMerchantCredentials(ctx, req.(*GetMerchantCredentialsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -296,15 +261,15 @@ var _Merchant_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MerchantServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetOrderInfo",
-			Handler:    _Merchant_GetOrderInfo_Handler,
+			MethodName: "GetMerchantCredentials",
+			Handler:    _Merchant_GetMerchantCredentials_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "merchant/merchant.proto",
 }
 
-func (m *Request) Marshal() (dAtA []byte, err error) {
+func (m *GetMerchantCredentialsRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -314,12 +279,12 @@ func (m *Request) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *Request) MarshalTo(dAtA []byte) (int, error) {
+func (m *GetMerchantCredentialsRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *Request) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *GetMerchantCredentialsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -328,77 +293,15 @@ func (m *Request) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	if len(m.ProviderSlug) > 0 {
-		i -= len(m.ProviderSlug)
-		copy(dAtA[i:], m.ProviderSlug)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.ProviderSlug)))
-		i--
-		dAtA[i] = 0x4a
-	}
-	if len(m.SecretKey) > 0 {
-		i -= len(m.SecretKey)
-		copy(dAtA[i:], m.SecretKey)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.SecretKey)))
-		i--
-		dAtA[i] = 0x42
-	}
-	if len(m.ShopId) > 0 {
-		i -= len(m.ShopId)
-		copy(dAtA[i:], m.ShopId)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.ShopId)))
-		i--
-		dAtA[i] = 0x3a
-	}
-	if m.Rebill {
-		i--
-		if m.Rebill {
-			dAtA[i] = 1
-		} else {
-			dAtA[i] = 0
-		}
-		i--
-		dAtA[i] = 0x30
-	}
-	if m.IncludeCommission {
-		i--
-		if m.IncludeCommission {
-			dAtA[i] = 1
-		} else {
-			dAtA[i] = 0
-		}
-		i--
-		dAtA[i] = 0x28
-	}
-	if len(m.CustomerPhone) > 0 {
-		i -= len(m.CustomerPhone)
-		copy(dAtA[i:], m.CustomerPhone)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.CustomerPhone)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.CustomerEmail) > 0 {
-		i -= len(m.CustomerEmail)
-		copy(dAtA[i:], m.CustomerEmail)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.CustomerEmail)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if len(m.Currency) > 0 {
-		i -= len(m.Currency)
-		copy(dAtA[i:], m.Currency)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.Currency)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Amount != 0 {
-		i = encodeVarintMerchant(dAtA, i, uint64(m.Amount))
+	if m.MerchantId != 0 {
+		i = encodeVarintMerchant(dAtA, i, uint64(m.MerchantId))
 		i--
 		dAtA[i] = 0x8
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *Response) Marshal() (dAtA []byte, err error) {
+func (m *GetMerchantCredentialsResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -408,12 +311,12 @@ func (m *Response) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *Response) MarshalTo(dAtA []byte) (int, error) {
+func (m *GetMerchantCredentialsResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *Response) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *GetMerchantCredentialsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -422,17 +325,45 @@ func (m *Response) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	if len(m.RedirectUrl) > 0 {
-		i -= len(m.RedirectUrl)
-		copy(dAtA[i:], m.RedirectUrl)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.RedirectUrl)))
+	if len(m.NotificationUrl) > 0 {
+		i -= len(m.NotificationUrl)
+		copy(dAtA[i:], m.NotificationUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.NotificationUrl)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.CancelUrl) > 0 {
+		i -= len(m.CancelUrl)
+		copy(dAtA[i:], m.CancelUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.CancelUrl)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.FailUrl) > 0 {
+		i -= len(m.FailUrl)
+		copy(dAtA[i:], m.FailUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.FailUrl)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.DeclineUrl) > 0 {
+		i -= len(m.DeclineUrl)
+		copy(dAtA[i:], m.DeclineUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.DeclineUrl)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.SuccessUrl) > 0 {
+		i -= len(m.SuccessUrl)
+		copy(dAtA[i:], m.SuccessUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.SuccessUrl)))
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.Token) > 0 {
-		i -= len(m.Token)
-		copy(dAtA[i:], m.Token)
-		i = encodeVarintMerchant(dAtA, i, uint64(len(m.Token)))
+	if len(m.ReturnUrl) > 0 {
+		i -= len(m.ReturnUrl)
+		copy(dAtA[i:], m.ReturnUrl)
+		i = encodeVarintMerchant(dAtA, i, uint64(len(m.ReturnUrl)))
 		i--
 		dAtA[i] = 0xa
 	}
@@ -450,44 +381,14 @@ func encodeVarintMerchant(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *Request) Size() (n int) {
+func (m *GetMerchantCredentialsRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if m.Amount != 0 {
-		n += 1 + sovMerchant(uint64(m.Amount))
-	}
-	l = len(m.Currency)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
-	}
-	l = len(m.CustomerEmail)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
-	}
-	l = len(m.CustomerPhone)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
-	}
-	if m.IncludeCommission {
-		n += 2
-	}
-	if m.Rebill {
-		n += 2
-	}
-	l = len(m.ShopId)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
-	}
-	l = len(m.SecretKey)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
-	}
-	l = len(m.ProviderSlug)
-	if l > 0 {
-		n += 1 + l + sovMerchant(uint64(l))
+	if m.MerchantId != 0 {
+		n += 1 + sovMerchant(uint64(m.MerchantId))
 	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -495,17 +396,33 @@ func (m *Request) Size() (n int) {
 	return n
 }
 
-func (m *Response) Size() (n int) {
+func (m *GetMerchantCredentialsResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Token)
+	l = len(m.ReturnUrl)
 	if l > 0 {
 		n += 1 + l + sovMerchant(uint64(l))
 	}
-	l = len(m.RedirectUrl)
+	l = len(m.SuccessUrl)
+	if l > 0 {
+		n += 1 + l + sovMerchant(uint64(l))
+	}
+	l = len(m.DeclineUrl)
+	if l > 0 {
+		n += 1 + l + sovMerchant(uint64(l))
+	}
+	l = len(m.FailUrl)
+	if l > 0 {
+		n += 1 + l + sovMerchant(uint64(l))
+	}
+	l = len(m.CancelUrl)
+	if l > 0 {
+		n += 1 + l + sovMerchant(uint64(l))
+	}
+	l = len(m.NotificationUrl)
 	if l > 0 {
 		n += 1 + l + sovMerchant(uint64(l))
 	}
@@ -521,7 +438,7 @@ func sovMerchant(x uint64) (n int) {
 func sozMerchant(x uint64) (n int) {
 	return sovMerchant(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *Request) Unmarshal(dAtA []byte) error {
+func (m *GetMerchantCredentialsRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -544,17 +461,17 @@ func (m *Request) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: Request: wiretype end group for non-group")
+			return fmt.Errorf("proto: GetMerchantCredentialsRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Request: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: GetMerchantCredentialsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field MerchantId", wireType)
 			}
-			m.Amount = 0
+			m.MerchantId = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowMerchant
@@ -564,243 +481,11 @@ func (m *Request) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Amount |= int32(b&0x7F) << shift
+				m.MerchantId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Currency", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Currency = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field CustomerEmail", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.CustomerEmail = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field CustomerPhone", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.CustomerPhone = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 5:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field IncludeCommission", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.IncludeCommission = bool(v != 0)
-		case 6:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Rebill", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Rebill = bool(v != 0)
-		case 7:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ShopId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ShopId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 8:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SecretKey", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SecretKey = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 9:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ProviderSlug", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowMerchant
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthMerchant
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ProviderSlug = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipMerchant(dAtA[iNdEx:])
@@ -823,7 +508,7 @@ func (m *Request) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *Response) Unmarshal(dAtA []byte) error {
+func (m *GetMerchantCredentialsResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -846,15 +531,15 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: Response: wiretype end group for non-group")
+			return fmt.Errorf("proto: GetMerchantCredentialsResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Response: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: GetMerchantCredentialsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Token", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field ReturnUrl", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -882,11 +567,11 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Token = string(dAtA[iNdEx:postIndex])
+			m.ReturnUrl = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RedirectUrl", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field SuccessUrl", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -914,7 +599,135 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.RedirectUrl = string(dAtA[iNdEx:postIndex])
+			m.SuccessUrl = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DeclineUrl", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowMerchant
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DeclineUrl = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FailUrl", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowMerchant
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FailUrl = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CancelUrl", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowMerchant
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CancelUrl = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NotificationUrl", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowMerchant
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthMerchant
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NotificationUrl = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex

@@ -3,22 +3,18 @@ syntax = "proto3";
 package merchant;
 
 service Merchant {
-  rpc GetOrderInfo(Request) returns (Response);
+  rpc GetMerchantCredentials(GetMerchantCredentialsRequest) returns (GetMerchantCredentialsResponse);
 }
 
-message Request {
-  int32 amount = 1;
-  string currency = 2;
-  string customerEmail = 3;
-  string customerPhone = 4;
-  bool includeCommission = 5;
-  bool rebill = 6;
-  string shopId = 7;
-  string secretKey = 8;
-  string providerSlug = 9;
+message GetMerchantCredentialsRequest {
+  int32 merchant_id = 1;
 }
 
-message Response {
-  string token = 1;
-  string redirectUrl = 2;
+message GetMerchantCredentialsResponse {
+  string return_url = 1;
+  string success_url = 2;
+  string decline_url = 3;
+  string fail_url = 4;
+  string cancel_url = 5;
+  string notification_url = 6;
 }
