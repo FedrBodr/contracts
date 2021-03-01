@@ -30,11 +30,16 @@ message GetPaymentTokenResponse {
 }
 
 message GetPaymentStatusRequest{
-
+  string token =1;
 }
 
 message GetPaymentStatusResponse {
-
+  string token = 1;
+  bool finished = 2;
+  bool expired = 3;
+  bool test = 4;
+  string status = 5;
+  string message = 6;
 }
 
 message DecodedProviderStatusRequest{
