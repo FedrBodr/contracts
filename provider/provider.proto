@@ -47,6 +47,7 @@ message DecodedProviderStatusResponse{
 
 message DecodeProviderNotificationRequest{
   bytes data = 1;
+  string providerSlug = 2;
 }
 
 message DecodeProviderNotificationResponse{
