@@ -4,7 +4,7 @@ package order;
 
 service Order {
   rpc GetOrderById(ByIdRequest) returns (OrderResponse);
-  rpc GetOrderByUID(ByUIDRequest) returns (Response);
+  rpc GetOrderByAcquirefyUID(GetOrderByAcquirefyUIDRequest) returns (GetOrderByAcquirefyUIDResponse);
   rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
   rpc GetOrdersByMerchant(Request) returns (Response);
   rpc SetOrderStatus(SetOrderStatusRequest) returns (SetOrderStatusResponse);
@@ -15,8 +15,12 @@ message ByIdRequest{
   int32 id = 1;
 }
 
-message ByUIDRequest {
-  string uid = 1;
+message GetOrderByAcquirefyUIDRequest {
+  string acquirefy_uid = 1;
+}
+
+message GetOrderByAcquirefyUIDResponse {
+  OrderElement order = 1;
 }
 
 message OrderElement {
