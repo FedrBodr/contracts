@@ -47,7 +47,7 @@ message CreateOrderResponse{
 
 message SetOrderStatusRequest{
   string tracking_id = 1;
-  string newStatus = 2;
+  int32 newStatus = 2;
 }
 
 message SetOrderStatusResponse{
