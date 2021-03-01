@@ -33,6 +33,7 @@ message OrderElement {
   string merchant_tracking_uid = 13;
   string credential_name = 14;
   string provider_name = 15;
+  string acquirefy_uid = 16;
 }
 
 message CreateOrderRequest{
