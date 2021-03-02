@@ -8,6 +8,7 @@ service ProviderService {
 
 message GetProviderByIDRequest{
   int32 id = 1;
+  string trace = 2;
 }
 
 message GetProviderByIDResponse{

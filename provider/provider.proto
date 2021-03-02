@@ -21,6 +21,7 @@ message GetPaymentTokenRequest {
   string providerSlug = 9;
   string trackingId = 10;
   string description = 11;
+  string trace = 12;
 }
 
 message GetPaymentTokenResponse {
@@ -34,6 +35,7 @@ message GetPaymentStatusRequest{
   string shopId = 2;
   string secretKey = 3;
   string providerSlug = 4;
+  string trace = 5;
 }
 
 message GetPaymentStatusResponse {
@@ -47,7 +49,8 @@ message GetPaymentStatusResponse {
 
 message DecodedProviderStatusRequest{
   string status = 1;
-  string providerSlug = 4;
+  string trace = 2;
+  string providerSlug = 3;
 }
 
 message DecodedProviderStatusResponse{
@@ -57,6 +60,7 @@ message DecodedProviderStatusResponse{
 message DecodeProviderNotificationRequest{
   bytes data = 1;
   string providerSlug = 2;
+  string trace = 3;
 }
 
 message DecodeProviderNotificationResponse{

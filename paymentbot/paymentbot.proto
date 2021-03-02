@@ -10,6 +10,7 @@ message Request {
   string subject = 1;
   string message = 2;
   map<int64, int32> messagesForAnswer = 3;
+  string trace = 4;
 }
 
 message Response {

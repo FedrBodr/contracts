@@ -13,10 +13,12 @@ service Order {
 
 message ByIdRequest{
   int32 id = 1;
+  string trace = 2;
 }
 
 message GetOrderByAcquirefyUIDRequest {
   string acquirefy_uid = 1;
+  string trace = 2;
 }
 
 message GetOrderByAcquirefyUIDResponse {
@@ -42,6 +44,7 @@ message OrderElement {
 
 message CreateOrderRequest{
   OrderElement order = 1 ;
+  string trace = 2;
 }
 
 message CreateOrderResponse{
@@ -52,6 +55,7 @@ message CreateOrderResponse{
 message SetOrderStatusRequest{
   string tracking_id = 1;
   int32 newStatus = 2;
+  string trace = 3;
 }
 
 message SetOrderStatusResponse{
@@ -73,6 +77,7 @@ message Request {
   string secretKey = 8;
   string providerSlug = 9;
   string trackingId = 10;
+  string trace = 11;
 }
 
 message Response {
@@ -83,13 +88,16 @@ message Response {
 
 message GetOrdersByMerchantRequest{
   int32 merchant_id = 1;
+  string trace = 2;
 }
 
 message GetOrdersByMerchantResponse{
   repeated OrderElement orders = 1;
 }
 
-message GetOrdersRequest{}
+message GetOrdersRequest{
+  string trace = 1;
+}
 message GetOrdersResponse{
   repeated OrderElement orders = 1;
 }
