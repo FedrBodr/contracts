@@ -6,3 +6,4 @@ proto:
 	protoc --gofast_out=plugins=grpc:. ./provider/provider.proto
 	protoc --gofast_out=plugins=grpc:. ./provider_service/provider_service.proto
 	protoc --gofast_out=plugins=grpc:. ./order/order.proto
+	protoc --gofast_out=plugins=grpc:. ./calculation/calculation.proto
