@@ -1,15 +1,16 @@
 syntax = "proto3";
 
-package calculation;
+package calculation_service;
 
-service Calculation {
+service CalculationService {
   rpc CalculateSuccessTransaction(CalculateSuccessTransactionRequest) returns (CalculateSuccessTransactionResponse);
 }
 
 message CalculateSuccessTransactionRequest{
   int32 provider_id = 1;
   int32 merchant_id = 2;
-  int32 amount = 3;
+  int32 order_id = 3;
+  int32 amount = 4;
 }
 
 message CalculateSuccessTransactionResponse{

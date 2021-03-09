@@ -26,6 +26,132 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type ProviderElement struct {
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Alias                string   `protobuf:"bytes,2,opt,name=alias,proto3" json:"alias,omitempty"`
+	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Domain               string   `protobuf:"bytes,4,opt,name=domain,proto3" json:"domain,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ProviderElement) Reset()         { *m = ProviderElement{} }
+func (m *ProviderElement) String() string { return proto.CompactTextString(m) }
+func (*ProviderElement) ProtoMessage()    {}
+func (*ProviderElement) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{0}
+}
+func (m *ProviderElement) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ProviderElement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ProviderElement.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ProviderElement) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ProviderElement.Merge(m, src)
+}
+func (m *ProviderElement) XXX_Size() int {
+	return m.Size()
+}
+func (m *ProviderElement) XXX_DiscardUnknown() {
+	xxx_messageInfo_ProviderElement.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ProviderElement proto.InternalMessageInfo
+
+func (m *ProviderElement) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *ProviderElement) GetAlias() string {
+	if m != nil {
+		return m.Alias
+	}
+	return ""
+}
+
+func (m *ProviderElement) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ProviderElement) GetDomain() string {
+	if m != nil {
+		return m.Domain
+	}
+	return ""
+}
+
+type ProvidersSelectElement struct {
+	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Label                string   `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ProvidersSelectElement) Reset()         { *m = ProvidersSelectElement{} }
+func (m *ProvidersSelectElement) String() string { return proto.CompactTextString(m) }
+func (*ProvidersSelectElement) ProtoMessage()    {}
+func (*ProvidersSelectElement) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{1}
+}
+func (m *ProvidersSelectElement) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ProvidersSelectElement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ProvidersSelectElement.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ProvidersSelectElement) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ProvidersSelectElement.Merge(m, src)
+}
+func (m *ProvidersSelectElement) XXX_Size() int {
+	return m.Size()
+}
+func (m *ProvidersSelectElement) XXX_DiscardUnknown() {
+	xxx_messageInfo_ProvidersSelectElement.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ProvidersSelectElement proto.InternalMessageInfo
+
+func (m *ProvidersSelectElement) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
+
+func (m *ProvidersSelectElement) GetLabel() string {
+	if m != nil {
+		return m.Label
+	}
+	return ""
+}
+
 type GetProviderByIDRequest struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Trace                string   `protobuf:"bytes,2,opt,name=trace,proto3" json:"trace,omitempty"`
@@ -38,7 +164,7 @@ func (m *GetProviderByIDRequest) Reset()         { *m = GetProviderByIDRequest{}
 func (m *GetProviderByIDRequest) String() string { return proto.CompactTextString(m) }
 func (*GetProviderByIDRequest) ProtoMessage()    {}
 func (*GetProviderByIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3f5d256b19f92f75, []int{0}
+	return fileDescriptor_3f5d256b19f92f75, []int{2}
 }
 func (m *GetProviderByIDRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -82,20 +208,17 @@ func (m *GetProviderByIDRequest) GetTrace() string {
 }
 
 type GetProviderByIDResponse struct {
-	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Alias                string   `protobuf:"bytes,2,opt,name=alias,proto3" json:"alias,omitempty"`
-	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Domain               string   `protobuf:"bytes,4,opt,name=domain,proto3" json:"domain,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Provider             *ProviderElement `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
 func (m *GetProviderByIDResponse) Reset()         { *m = GetProviderByIDResponse{} }
 func (m *GetProviderByIDResponse) String() string { return proto.CompactTextString(m) }
 func (*GetProviderByIDResponse) ProtoMessage()    {}
 func (*GetProviderByIDResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3f5d256b19f92f75, []int{1}
+	return fileDescriptor_3f5d256b19f92f75, []int{3}
 }
 func (m *GetProviderByIDResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -124,37 +247,210 @@ func (m *GetProviderByIDResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetProviderByIDResponse proto.InternalMessageInfo
 
-func (m *GetProviderByIDResponse) GetId() int32 {
+func (m *GetProviderByIDResponse) GetProvider() *ProviderElement {
 	if m != nil {
-		return m.Id
+		return m.Provider
 	}
-	return 0
+	return nil
 }
 
-func (m *GetProviderByIDResponse) GetAlias() string {
+type GetProvidersListRequest struct {
+	Trace                string   `protobuf:"bytes,1,opt,name=trace,proto3" json:"trace,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetProvidersListRequest) Reset()         { *m = GetProvidersListRequest{} }
+func (m *GetProvidersListRequest) String() string { return proto.CompactTextString(m) }
+func (*GetProvidersListRequest) ProtoMessage()    {}
+func (*GetProvidersListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{4}
+}
+func (m *GetProvidersListRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetProvidersListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetProvidersListRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetProvidersListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetProvidersListRequest.Merge(m, src)
+}
+func (m *GetProvidersListRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetProvidersListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetProvidersListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetProvidersListRequest proto.InternalMessageInfo
+
+func (m *GetProvidersListRequest) GetTrace() string {
 	if m != nil {
-		return m.Alias
+		return m.Trace
 	}
 	return ""
 }
 
-func (m *GetProviderByIDResponse) GetName() string {
+type GetProvidersListResponse struct {
+	Items                []*ProviderElement `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *GetProvidersListResponse) Reset()         { *m = GetProvidersListResponse{} }
+func (m *GetProvidersListResponse) String() string { return proto.CompactTextString(m) }
+func (*GetProvidersListResponse) ProtoMessage()    {}
+func (*GetProvidersListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{5}
+}
+func (m *GetProvidersListResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetProvidersListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetProvidersListResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetProvidersListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetProvidersListResponse.Merge(m, src)
+}
+func (m *GetProvidersListResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetProvidersListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetProvidersListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetProvidersListResponse proto.InternalMessageInfo
+
+func (m *GetProvidersListResponse) GetItems() []*ProviderElement {
 	if m != nil {
-		return m.Name
+		return m.Items
+	}
+	return nil
+}
+
+type GetProvidersSelectListRequest struct {
+	Trace                string   `protobuf:"bytes,1,opt,name=trace,proto3" json:"trace,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetProvidersSelectListRequest) Reset()         { *m = GetProvidersSelectListRequest{} }
+func (m *GetProvidersSelectListRequest) String() string { return proto.CompactTextString(m) }
+func (*GetProvidersSelectListRequest) ProtoMessage()    {}
+func (*GetProvidersSelectListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{6}
+}
+func (m *GetProvidersSelectListRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetProvidersSelectListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetProvidersSelectListRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetProvidersSelectListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetProvidersSelectListRequest.Merge(m, src)
+}
+func (m *GetProvidersSelectListRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetProvidersSelectListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetProvidersSelectListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetProvidersSelectListRequest proto.InternalMessageInfo
+
+func (m *GetProvidersSelectListRequest) GetTrace() string {
+	if m != nil {
+		return m.Trace
 	}
 	return ""
 }
 
-func (m *GetProviderByIDResponse) GetDomain() string {
-	if m != nil {
-		return m.Domain
+type GetProvidersSelectListResponse struct {
+	Items                []*ProvidersSelectElement `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *GetProvidersSelectListResponse) Reset()         { *m = GetProvidersSelectListResponse{} }
+func (m *GetProvidersSelectListResponse) String() string { return proto.CompactTextString(m) }
+func (*GetProvidersSelectListResponse) ProtoMessage()    {}
+func (*GetProvidersSelectListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3f5d256b19f92f75, []int{7}
+}
+func (m *GetProvidersSelectListResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetProvidersSelectListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetProvidersSelectListResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
 	}
-	return ""
+}
+func (m *GetProvidersSelectListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetProvidersSelectListResponse.Merge(m, src)
+}
+func (m *GetProvidersSelectListResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetProvidersSelectListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetProvidersSelectListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetProvidersSelectListResponse proto.InternalMessageInfo
+
+func (m *GetProvidersSelectListResponse) GetItems() []*ProvidersSelectElement {
+	if m != nil {
+		return m.Items
+	}
+	return nil
 }
 
 func init() {
+	proto.RegisterType((*ProviderElement)(nil), "provider_service.ProviderElement")
+	proto.RegisterType((*ProvidersSelectElement)(nil), "provider_service.ProvidersSelectElement")
 	proto.RegisterType((*GetProviderByIDRequest)(nil), "provider_service.GetProviderByIDRequest")
 	proto.RegisterType((*GetProviderByIDResponse)(nil), "provider_service.GetProviderByIDResponse")
+	proto.RegisterType((*GetProvidersListRequest)(nil), "provider_service.GetProvidersListRequest")
+	proto.RegisterType((*GetProvidersListResponse)(nil), "provider_service.GetProvidersListResponse")
+	proto.RegisterType((*GetProvidersSelectListRequest)(nil), "provider_service.GetProvidersSelectListRequest")
+	proto.RegisterType((*GetProvidersSelectListResponse)(nil), "provider_service.GetProvidersSelectListResponse")
 }
 
 func init() {
@@ -162,21 +458,32 @@ func init() {
 }
 
 var fileDescriptor_3f5d256b19f92f75 = []byte{
-	// 217 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2f, 0x28, 0xca, 0x2f,
-	0xcb, 0x4c, 0x49, 0x2d, 0x8a, 0x2f, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x47, 0x17, 0xd0,
-	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12, 0x40, 0x17, 0x57, 0xb2, 0xe3, 0x12, 0x73, 0x4f, 0x2d,
-	0x09, 0x80, 0x0a, 0x3b, 0x55, 0x7a, 0xba, 0x04, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x08, 0xf1,
-	0x71, 0x31, 0x65, 0xa6, 0x48, 0x30, 0x2a, 0x30, 0x6a, 0xb0, 0x06, 0x31, 0x65, 0xa6, 0x08, 0x89,
-	0x70, 0xb1, 0x96, 0x14, 0x25, 0x26, 0xa7, 0x4a, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x06, 0x41, 0x38,
-	0x4a, 0xd9, 0x5c, 0xe2, 0x18, 0xfa, 0x8b, 0x0b, 0xf2, 0xf3, 0x8a, 0x53, 0xb1, 0x19, 0x90, 0x98,
-	0x93, 0x99, 0x58, 0x0c, 0x33, 0x00, 0xcc, 0x11, 0x12, 0xe2, 0x62, 0xc9, 0x4b, 0xcc, 0x4d, 0x95,
-	0x60, 0x06, 0x0b, 0x82, 0xd9, 0x42, 0x62, 0x5c, 0x6c, 0x29, 0xf9, 0xb9, 0x89, 0x99, 0x79, 0x12,
-	0x2c, 0x60, 0x51, 0x28, 0xcf, 0xa8, 0x92, 0x8b, 0x1f, 0x66, 0x53, 0x30, 0xc4, 0xfd, 0x42, 0x69,
-	0x5c, 0xfc, 0x68, 0xf6, 0x0b, 0x69, 0xe8, 0x61, 0xf8, 0x1e, 0xbb, 0x17, 0xa5, 0x34, 0x89, 0x50,
-	0x09, 0xf1, 0x8c, 0x93, 0xc0, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24,
-	0xc7, 0x38, 0xe3, 0xb1, 0x1c, 0x43, 0x12, 0x1b, 0x38, 0x48, 0x8d, 0x01, 0x01, 0x00, 0x00, 0xff,
-	0xff, 0x5b, 0x99, 0xb6, 0xfb, 0x7d, 0x01, 0x00, 0x00,
+	// 390 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xcf, 0x4a, 0xeb, 0x40,
+	0x14, 0xc6, 0xef, 0xa4, 0x4d, 0xb9, 0x3d, 0x17, 0x6e, 0xcb, 0x50, 0x7a, 0x43, 0xe1, 0x86, 0x9a,
+	0x8d, 0xd5, 0x45, 0x2b, 0x15, 0x71, 0x65, 0x17, 0xa5, 0x22, 0x82, 0x0b, 0x49, 0x37, 0xee, 0x34,
+	0x4d, 0x8e, 0x30, 0x90, 0x3f, 0x35, 0x93, 0x16, 0xc4, 0x17, 0xf1, 0x91, 0x5c, 0xfa, 0x08, 0x5a,
+	0x5f, 0x44, 0x9c, 0x64, 0x6a, 0xfe, 0xb4, 0x35, 0xbb, 0x9c, 0xc3, 0xf9, 0xce, 0xf7, 0xe3, 0x3b,
+	0x13, 0xd8, 0x9f, 0x87, 0xc1, 0x92, 0x39, 0x18, 0xde, 0x72, 0x0c, 0x97, 0xcc, 0xc6, 0x41, 0xbe,
+	0xd1, 0x9f, 0x87, 0x41, 0x14, 0xd0, 0x66, 0xbe, 0x6f, 0xd8, 0xd0, 0xb8, 0x4e, 0x7a, 0xe7, 0x2e,
+	0x7a, 0xe8, 0x47, 0xf4, 0x2f, 0x28, 0xcc, 0xd1, 0x48, 0x97, 0xf4, 0x54, 0x53, 0x61, 0x0e, 0x6d,
+	0x81, 0x6a, 0xb9, 0xcc, 0xe2, 0x9a, 0xd2, 0x25, 0xbd, 0xba, 0x19, 0x17, 0x94, 0x42, 0xd5, 0xb7,
+	0x3c, 0xd4, 0x2a, 0xa2, 0x29, 0xbe, 0x69, 0x1b, 0x6a, 0x4e, 0xe0, 0x59, 0xcc, 0xd7, 0xaa, 0xa2,
+	0x9b, 0x54, 0xc6, 0x04, 0xda, 0xd2, 0x84, 0x4f, 0xd1, 0x45, 0x3b, 0x92, 0x5e, 0x2d, 0x50, 0x97,
+	0x96, 0xbb, 0x40, 0x61, 0x57, 0x37, 0xe3, 0xe2, 0xab, 0xeb, 0x5a, 0x33, 0x74, 0xa5, 0xa3, 0x28,
+	0x8c, 0x11, 0xb4, 0x2f, 0x30, 0x92, 0x8b, 0xc6, 0x8f, 0x97, 0x13, 0x13, 0x1f, 0x16, 0xc8, 0x37,
+	0x12, 0x47, 0xa1, 0x65, 0xa3, 0xd4, 0x8b, 0xc2, 0xb8, 0x81, 0x7f, 0x05, 0x3d, 0x9f, 0x07, 0x3e,
+	0x47, 0x7a, 0x06, 0xbf, 0x65, 0x32, 0x62, 0xcd, 0x9f, 0xe1, 0x5e, 0xbf, 0x10, 0x61, 0x2e, 0x27,
+	0x73, 0x2d, 0x31, 0x06, 0x99, 0xcd, 0xfc, 0x8a, 0xf1, 0x48, 0xa2, 0xad, 0x51, 0x48, 0x1a, 0x65,
+	0x0a, 0x5a, 0x51, 0x90, 0xb0, 0x9c, 0x82, 0xca, 0x22, 0xf4, 0xb8, 0x46, 0xba, 0x95, 0x72, 0x20,
+	0xf1, 0xbc, 0x71, 0x02, 0xff, 0xd3, 0x4b, 0xe3, 0xa0, 0x7f, 0x66, 0xb9, 0x03, 0x7d, 0x9b, 0x2c,
+	0x21, 0x1a, 0x65, 0x89, 0x7a, 0xdb, 0x89, 0xb2, 0xd7, 0x4d, 0xc0, 0x86, 0xef, 0xca, 0xf7, 0x23,
+	0x9b, 0xc6, 0x0a, 0x7a, 0x0f, 0x8d, 0xdc, 0x31, 0xe8, 0x86, 0xbd, 0x9b, 0xef, 0xdd, 0x39, 0x28,
+	0x31, 0x99, 0xb0, 0x33, 0x68, 0xe6, 0x93, 0xa6, 0xbb, 0xe5, 0xe9, 0xf3, 0x75, 0x0e, 0xcb, 0x8c,
+	0x26, 0x56, 0x4f, 0x99, 0xf7, 0x99, 0x0a, 0x92, 0x0e, 0x76, 0x6f, 0x29, 0x5c, 0xaa, 0x73, 0x54,
+	0x5e, 0x10, 0x9b, 0x8f, 0x9b, 0x2f, 0x2b, 0x9d, 0xbc, 0xae, 0x74, 0xf2, 0xb6, 0xd2, 0xc9, 0xf3,
+	0x87, 0xfe, 0x6b, 0x56, 0x13, 0xbf, 0xfc, 0xf1, 0x67, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33, 0x14,
+	0x1b, 0x5b, 0x1d, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -192,6 +499,8 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ProviderServiceClient interface {
 	GetProviderByID(ctx context.Context, in *GetProviderByIDRequest, opts ...grpc.CallOption) (*GetProviderByIDResponse, error)
+	GetProvidersList(ctx context.Context, in *GetProvidersListRequest, opts ...grpc.CallOption) (*GetProvidersListResponse, error)
+	GetProvidersSelectList(ctx context.Context, in *GetProvidersSelectListRequest, opts ...grpc.CallOption) (*GetProvidersSelectListResponse, error)
 }
 
 type providerServiceClient struct {
@@ -211,9 +520,29 @@ func (c *providerServiceClient) GetProviderByID(ctx context.Context, in *GetProv
 	return out, nil
 }
 
+func (c *providerServiceClient) GetProvidersList(ctx context.Context, in *GetProvidersListRequest, opts ...grpc.CallOption) (*GetProvidersListResponse, error) {
+	out := new(GetProvidersListResponse)
+	err := c.cc.Invoke(ctx, "/provider_service.ProviderService/GetProvidersList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *providerServiceClient) GetProvidersSelectList(ctx context.Context, in *GetProvidersSelectListRequest, opts ...grpc.CallOption) (*GetProvidersSelectListResponse, error) {
+	out := new(GetProvidersSelectListResponse)
+	err := c.cc.Invoke(ctx, "/provider_service.ProviderService/GetProvidersSelectList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServiceServer is the server API for ProviderService service.
 type ProviderServiceServer interface {
 	GetProviderByID(context.Context, *GetProviderByIDRequest) (*GetProviderByIDResponse, error)
+	GetProvidersList(context.Context, *GetProvidersListRequest) (*GetProvidersListResponse, error)
+	GetProvidersSelectList(context.Context, *GetProvidersSelectListRequest) (*GetProvidersSelectListResponse, error)
 }
 
 // UnimplementedProviderServiceServer can be embedded to have forward compatible implementations.
@@ -222,6 +551,12 @@ type UnimplementedProviderServiceServer struct {
 
 func (*UnimplementedProviderServiceServer) GetProviderByID(ctx context.Context, req *GetProviderByIDRequest) (*GetProviderByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProviderByID not implemented")
+}
+func (*UnimplementedProviderServiceServer) GetProvidersList(ctx context.Context, req *GetProvidersListRequest) (*GetProvidersListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProvidersList not implemented")
+}
+func (*UnimplementedProviderServiceServer) GetProvidersSelectList(ctx context.Context, req *GetProvidersSelectListRequest) (*GetProvidersSelectListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProvidersSelectList not implemented")
 }
 
 func RegisterProviderServiceServer(s *grpc.Server, srv ProviderServiceServer) {
@@ -246,6 +581,42 @@ func _ProviderService_GetProviderByID_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProviderService_GetProvidersList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProvidersListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServiceServer).GetProvidersList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/provider_service.ProviderService/GetProvidersList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServiceServer).GetProvidersList(ctx, req.(*GetProvidersListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProviderService_GetProvidersSelectList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProvidersSelectListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServiceServer).GetProvidersSelectList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/provider_service.ProviderService/GetProvidersSelectList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServiceServer).GetProvidersSelectList(ctx, req.(*GetProvidersSelectListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ProviderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "provider_service.ProviderService",
 	HandlerType: (*ProviderServiceServer)(nil),
@@ -254,9 +625,111 @@ var _ProviderService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "GetProviderByID",
 			Handler:    _ProviderService_GetProviderByID_Handler,
 		},
+		{
+			MethodName: "GetProvidersList",
+			Handler:    _ProviderService_GetProvidersList_Handler,
+		},
+		{
+			MethodName: "GetProvidersSelectList",
+			Handler:    _ProviderService_GetProvidersSelectList_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "provider_service/provider_service.proto",
+}
+
+func (m *ProviderElement) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ProviderElement) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ProviderElement) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Domain) > 0 {
+		i -= len(m.Domain)
+		copy(dAtA[i:], m.Domain)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Domain)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Name) > 0 {
+		i -= len(m.Name)
+		copy(dAtA[i:], m.Name)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Name)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Alias) > 0 {
+		i -= len(m.Alias)
+		copy(dAtA[i:], m.Alias)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Alias)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Id != 0 {
+		i = encodeVarintProviderService(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ProvidersSelectElement) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ProvidersSelectElement) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ProvidersSelectElement) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Label) > 0 {
+		i -= len(m.Label)
+		copy(dAtA[i:], m.Label)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Label)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Value) > 0 {
+		i -= len(m.Value)
+		copy(dAtA[i:], m.Value)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Value)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *GetProviderByIDRequest) Marshal() (dAtA []byte, err error) {
@@ -322,31 +795,167 @@ func (m *GetProviderByIDResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	if len(m.Domain) > 0 {
-		i -= len(m.Domain)
-		copy(dAtA[i:], m.Domain)
-		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Domain)))
+	if m.Provider != nil {
+		{
+			size, err := m.Provider.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintProviderService(dAtA, i, uint64(size))
+		}
 		i--
-		dAtA[i] = 0x22
+		dAtA[i] = 0xa
 	}
-	if len(m.Name) > 0 {
-		i -= len(m.Name)
-		copy(dAtA[i:], m.Name)
-		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Name)))
-		i--
-		dAtA[i] = 0x1a
+	return len(dAtA) - i, nil
+}
+
+func (m *GetProvidersListRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
 	}
-	if len(m.Alias) > 0 {
-		i -= len(m.Alias)
-		copy(dAtA[i:], m.Alias)
-		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Alias)))
-		i--
-		dAtA[i] = 0x12
+	return dAtA[:n], nil
+}
+
+func (m *GetProvidersListRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetProvidersListRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	if m.Id != 0 {
-		i = encodeVarintProviderService(dAtA, i, uint64(m.Id))
+	if len(m.Trace) > 0 {
+		i -= len(m.Trace)
+		copy(dAtA[i:], m.Trace)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Trace)))
 		i--
-		dAtA[i] = 0x8
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetProvidersListResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetProvidersListResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetProvidersListResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Items) > 0 {
+		for iNdEx := len(m.Items) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Items[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintProviderService(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetProvidersSelectListRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetProvidersSelectListRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetProvidersSelectListRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Trace) > 0 {
+		i -= len(m.Trace)
+		copy(dAtA[i:], m.Trace)
+		i = encodeVarintProviderService(dAtA, i, uint64(len(m.Trace)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetProvidersSelectListResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetProvidersSelectListResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetProvidersSelectListResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Items) > 0 {
+		for iNdEx := len(m.Items) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Items[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintProviderService(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
 	}
 	return len(dAtA) - i, nil
 }
@@ -362,26 +971,7 @@ func encodeVarintProviderService(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *GetProviderByIDRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Id != 0 {
-		n += 1 + sovProviderService(uint64(m.Id))
-	}
-	l = len(m.Trace)
-	if l > 0 {
-		n += 1 + l + sovProviderService(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *GetProviderByIDResponse) Size() (n int) {
+func (m *ProviderElement) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -408,11 +998,415 @@ func (m *GetProviderByIDResponse) Size() (n int) {
 	return n
 }
 
+func (m *ProvidersSelectElement) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Value)
+	if l > 0 {
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	l = len(m.Label)
+	if l > 0 {
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProviderByIDRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovProviderService(uint64(m.Id))
+	}
+	l = len(m.Trace)
+	if l > 0 {
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProviderByIDResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Provider != nil {
+		l = m.Provider.Size()
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProvidersListRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Trace)
+	if l > 0 {
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProvidersListResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Items) > 0 {
+		for _, e := range m.Items {
+			l = e.Size()
+			n += 1 + l + sovProviderService(uint64(l))
+		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProvidersSelectListRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Trace)
+	if l > 0 {
+		n += 1 + l + sovProviderService(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetProvidersSelectListResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Items) > 0 {
+		for _, e := range m.Items {
+			l = e.Size()
+			n += 1 + l + sovProviderService(uint64(l))
+		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func sovProviderService(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozProviderService(x uint64) (n int) {
 	return sovProviderService(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *ProviderElement) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ProviderElement: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ProviderElement: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Alias", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Alias = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Domain", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Domain = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ProvidersSelectElement) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ProvidersSelectElement: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ProvidersSelectElement: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Value = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Label", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Label = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *GetProviderByIDRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
@@ -546,29 +1540,10 @@ func (m *GetProviderByIDResponse) Unmarshal(dAtA []byte) error {
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
-			}
-			m.Id = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowProviderService
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Id |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Alias", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Provider", wireType)
 			}
-			var stringLen uint64
+			var msglen int
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowProviderService
@@ -578,27 +1553,82 @@ func (m *GetProviderByIDResponse) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
+			if msglen < 0 {
 				return ErrInvalidLengthProviderService
 			}
-			postIndex := iNdEx + intStringLen
+			postIndex := iNdEx + msglen
 			if postIndex < 0 {
 				return ErrInvalidLengthProviderService
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Alias = string(dAtA[iNdEx:postIndex])
+			if m.Provider == nil {
+				m.Provider = &ProviderElement{}
+			}
+			if err := m.Provider.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
-		case 3:
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetProvidersListRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetProvidersListRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetProvidersListRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Trace", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -626,11 +1656,147 @@ func (m *GetProviderByIDResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Name = string(dAtA[iNdEx:postIndex])
+			m.Trace = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 4:
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetProvidersListResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetProvidersListResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetProvidersListResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Domain", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Items", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Items = append(m.Items, &ProviderElement{})
+			if err := m.Items[len(m.Items)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetProvidersSelectListRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetProvidersSelectListRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetProvidersSelectListRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Trace", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -658,7 +1824,92 @@ func (m *GetProviderByIDResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Domain = string(dAtA[iNdEx:postIndex])
+			m.Trace = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipProviderService(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetProvidersSelectListResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowProviderService
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetProvidersSelectListResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetProvidersSelectListResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Items", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowProviderService
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthProviderService
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Items = append(m.Items, &ProvidersSelectElement{})
+			if err := m.Items[len(m.Items)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex

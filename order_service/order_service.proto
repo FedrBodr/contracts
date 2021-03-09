@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package order;
+package order_service;
 
-service Order {
+service OrderService {
   rpc GetOrderById(ByIdRequest) returns (OrderResponse);
   rpc GetOrderByAcquirefyUID(GetOrderByAcquirefyUIDRequest) returns (GetOrderByAcquirefyUIDResponse);
   rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);

@@ -4,6 +4,20 @@ package provider_service;
 
 service ProviderService {
   rpc GetProviderByID(GetProviderByIDRequest) returns (GetProviderByIDResponse);
+  rpc GetProvidersList(GetProvidersListRequest) returns (GetProvidersListResponse);
+  rpc GetProvidersSelectList(GetProvidersSelectListRequest) returns (GetProvidersSelectListResponse);
+}
+
+message ProviderElement {
+  int32 id = 1;
+  string alias = 2;
+  string name = 3;
+  string domain = 4;
+}
+
+message ProvidersSelectElement {
+  string value = 1;
+  string label = 2;
 }
 
 message GetProviderByIDRequest{
@@ -12,8 +26,21 @@ message GetProviderByIDRequest{
 }
 
 message GetProviderByIDResponse{
-  int32 id = 1;
-  string alias = 2;
-  string name = 3;
-  string domain = 4;
+  ProviderElement provider = 1;
+}
+
+message GetProvidersListRequest{
+  string trace = 1;
+}
+
+message GetProvidersListResponse{
+  repeated ProviderElement items = 1;
+}
+
+message GetProvidersSelectListRequest{
+  string trace = 1;
+}
+
+message GetProvidersSelectListResponse{
+  repeated ProvidersSelectElement items = 1;
 }
