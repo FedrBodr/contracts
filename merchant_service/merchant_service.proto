@@ -42,7 +42,10 @@ message GetMerchantByIDResponse{
 
 message GetMerchantsRequest{
   string trace = 1;
+  int32 limit = 2;
+  int32 offset = 3;
 }
 message GetMerchantsResponse{
   repeated MerchantElement orders = 1;
+  int32 count = 2;
 }

@@ -31,10 +31,13 @@ message GetProviderByIDResponse{
 
 message GetProvidersListRequest{
   string trace = 1;
+  int32 limit = 2;
+  int32 offset = 3;
 }
 
 message GetProvidersListResponse{
   repeated ProviderElement items = 1;
+  int32 count = 2;
 }
 
 message GetProvidersSelectListRequest{

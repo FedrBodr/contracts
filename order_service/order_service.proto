@@ -97,6 +97,8 @@ message GetOrdersByMerchantResponse{
 
 message GetOrdersRequest{
   string trace = 1;
+  int32 limit = 2;
+  int32 offset = 3;
 }
 message GetOrdersResponse{
   repeated OrderElement orders = 1;
