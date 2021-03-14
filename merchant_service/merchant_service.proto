@@ -46,6 +46,6 @@ message GetMerchantsRequest{
   int32 offset = 3;
 }
 message GetMerchantsResponse{
-  repeated MerchantElement orders = 1;
+  repeated MerchantElement merchants = 1;
   int32 count = 2;
 }
