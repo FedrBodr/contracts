@@ -22,6 +22,7 @@ message GetPaymentTokenRequest {
   string trackingId = 10;
   string description = 11;
   string trace = 12;
+  bool test = 13;
 }
 
 message GetPaymentTokenResponse {

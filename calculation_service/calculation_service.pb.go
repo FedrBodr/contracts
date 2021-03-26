@@ -482,7 +482,10 @@ func (m *CalculateSuccessTransactionRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthCalculationService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthCalculationService
 			}
 			if (iNdEx + skippy) > l {
@@ -533,7 +536,10 @@ func (m *CalculateSuccessTransactionResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthCalculationService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthCalculationService
 			}
 			if (iNdEx + skippy) > l {

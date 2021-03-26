@@ -2569,7 +2569,10 @@ func (m *ByIdRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -2684,7 +2687,10 @@ func (m *GetOrderByAcquirefyUIDRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -2771,7 +2777,10 @@ func (m *GetOrderByAcquirefyUIDResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3205,7 +3214,10 @@ func (m *OrderElement) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3324,7 +3336,10 @@ func (m *CreateOrderRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3426,7 +3441,10 @@ func (m *CreateOrderResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3560,7 +3578,10 @@ func (m *SetOrderStatusRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3647,7 +3668,10 @@ func (m *SetOrderStatusResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -3717,7 +3741,10 @@ func (m *OrderResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4083,7 +4110,10 @@ func (m *Request) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4230,7 +4260,10 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4332,7 +4365,10 @@ func (m *GetOrdersByMerchantRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4417,7 +4453,10 @@ func (m *GetOrdersByMerchantResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4538,7 +4577,10 @@ func (m *GetOrdersRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
@@ -4623,7 +4665,10 @@ func (m *GetOrdersResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
+			if skippy < 0 {
+				return ErrInvalidLengthOrderService
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthOrderService
 			}
 			if (iNdEx + skippy) > l {
